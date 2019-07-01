@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS + icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Gammal CSS-->
+    <link rel="stylesheet" type="text/css" href="CSS/settings.css">
+    <link rel="stylesheet" type="text/css" href="CSS/newpage.css">
+    <link rel="stylesheet" type="text/css" href="CSS/tools.css">
+    <!-- Min CSS-->
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
+
+    <title>Friendlyreader</title>
+  </head>
+  <body>
+    <!--NAVBAR-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand menu" id="first-page" href="#">Friendlyreader</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link menu" id="help" href="#">Hjälp</a>
+      <a class="nav-item nav-link menu" id="about" href="#">Om</a>
+      <a class="nav-item nav-link menu" id="FAQ" href="#">FAQ</a>
+      <a class="nav-item nav-link menu" id="text" href="#">Text</a>
+      <a class="nav-item nav-link" id="undo"><i class="fa fa-undo hidden"></i></a>
+    </div>
+  </div>
+</nav>
+<!--Grafiska inställningar-meny-->
+<div id="getSettings" class="settingsmenu">
+    <a href="#" class="closebtn" onclick="closeSettings()">&times;</a>
+    <div id="settingslabel">Inställningar</div>
+    <div class="sublabel">Text</div>
+    <div class="settingwrapper">
+        <button class="settingsbuttons" onclick="changeLetterSize('smaller')">
+            <img src="CSS/Icons/Settingsicons/smallerLetter.PNG" height="35px">
+        </button>
+        <div class="settingsarea" id="lettersize">14</div>
+        <button class="settingsbuttons" onclick="changeLetterSize('bigger')">
+            <img src="CSS/Icons/Settingsicons/biggerLetter.PNG" height="35px">
+        </button>
+    </div>
+    <div class="settingwrapper">
+        <button class="settingsbuttons" onclick="changeLineSpace('smaller')">
+            <img src="CSS/Icons/Settingsicons/lessSpace.PNG" height="35px">
+        </button>
+        <div class="settingsarea" id="lineheight">1.5</div>
+        <button class="settingsbuttons" onclick="changeLineSpace('bigger')">
+            <img src="CSS/Icons/Settingsicons/moreSpace.PNG" height="35px">
+        </button>
+    </div>
+    <div id="font" class="settingwrapper">
+        <button class="settingsbuttons" id="font1" onclick="changeFont('Calibri')">
+            <img src="CSS/Icons/Settingsicons/calibri.PNG" height="35px">
+        </button>
+        </button>
+        <button class="settingsbuttons chosentype" id="font3" onclick="changeFont('Arial')">
+            <img src="CSS/Icons/Settingsicons/arial.PNG" height="35px">
+        </button>
+    </div>
+    <div id="fontlabels">
+        <div class="settingsarea fontname">Calibri</div>
+        <div class="settingsarea fontname">Arial</div>
+    </div>
+    <div class="settingwrapper">
+        <button class="settingsbuttons" id="lesswidth" onclick="changeWidth('smaller')">
+            <img src="CSS/Icons/Settingsicons/lessWide.PNG" height="35px">
+        </button>
+        <div class="settingsarea" id="textwidth">100%</div>
+        <button class="settingsbuttons" id="widertext" onclick="changeWidth('bigger')">
+            <img src="CSS/Icons/Settingsicons/wider.PNG" height="35px">
+        </button>
+    </div>
+</div>
+<!--FÖRSTA SIDAN-->
+<div id="first-page-container">
+<div class="welcome"><h4>Hej och välkommen till läsverktyget Friendly Reader!</h4>
+Friendly Reader är ett verktyg för att underlätta läsning av olika typer av texter. För att börja använda vektyget klistrar du in valfri text i rutan nedan och trycker därefter kör..
+</div>
+<div class="form-group shadow-textarea">
+  <textarea class="form-control z-depth-1 inputtext" id="inputtext" colums="50"rows="10" placeholder="Klistra in din text här..."></textarea>
+</div>
+<button type="button" class="btn btn-primary btn-lg button" onclick="newPage()">KÖR!</button>
+</div>
+<i id="refresh" class="fa fa-refresh fa-spin fa-2x" aria-hidden="true"></i>
+<div class="navbar-options" id="help-container">
+  <div class="textarea-fp">
+    <h3>Hur fungerar sidan?</h3>
+    <p>Klistra in en text i rutan och tryck på kör för att påbörja användningen av verktyget. Vad verktyget gör är att den ändrar om texten något för att vara mer lättläst utifrån default inställningar, dessa går att ändra med inställningsknappen i övre högra hörnet. Den ändrade texten kommer dyka upp på en ny sida där det finns flera olika funktioner att använda sig av för att underlätta läsningen.
+
+De funktioner som finns att tillgå i detta verktyg är Sammanfattning, Förenkling, Läslinjal, Uppläsning och Synonymhantering.
+
+Vill du lägga in en ny text att läsa utan att tappa alla de inställningar du gjort kan du trycka på loggan för att ta dig tillbaka till första sidan. Sedan är det bara att klistra in den nya texten i textrutan och trycka på kör-knappen.
+    </p>
+    <h3>Vilka funktioner finns?</h3>
+    <p>
+      De funktioner som finns att tillgå i detta verktyg är Sammanfattning, Förenkling, Läslinjal, Uppläsning och Synonymhantering.
+Sammanfattning är en funktion som sammanfattar texten genom att ta ut några av de viktigaste meningarna i texten och presenterar dessa i punktform.
+Förenkling fungerar på så vis att den förenklar hela texten genom att ändra den befintliga texten till den förenklade texten.
+Läslinjal finns i tre varianter, fokus - visar bara delar av texten, linjal - en läslinjal i form av ett svart sträck och markering - markerar en mening i taget. Vid dubbelklick på sidan med fokus eller linjal läslinjelerna igång kan du flyttar du linjalerna med pil upp eller ned.
+Uppläsning är en funktion som läser upp den text du lagt in. I framtida implementering kommer denna funktion möjligtvis även markera den text som läses, mening för mening.
+Synonymhantering är en funktion som belyser de ord som har synonymer när musen sveps över dessa ord och visar upp till tre synonymer till dessa ord.
+    </p>
+</div>
+</div>
+<div class="navbar-options" id="about-container">
+  <div class="textarea-fp">
+    <h3>Om Friendlyreader</h3>
+    <p> Diginclud, eller digital inkludering, är ett storskaligt projekt vars syfte är att förbättra offentlig sektors digitala tillgänglighet för medborgare med speciella behov genom skrivstöd med kvalitetsstyrning av text, textförenklingar, flerspråkig terminologi, snabböversättningar, etc. Utöver stöd for myndigheters textproduktion ska den enskilda individen kunna använda lösningar for självservice som är anpassade utifrån individens personliga behov. Målet är att verktyg ska vara interoperabelt tillgängliga i integrerade lösningar som utvecklats och testats tillsammans med myndigheter.
+
+Friendly Reader är ett delprojekt i Diginclud och syftar till skapa ett läsverktyg med fokus på personer med läsvårigheter. För att uppnå detta har vi skapat en tjänst som innehåller en mängd olika verktyg för att göra det lättare för personer både med och utan olika typer av lässvårigheter. Denna tjänst är alltså primärt riktad mot personer med lässvårigheter, men kan användas av samtliga som finner intresse för att underlätta läsningen.
+    </p>
+  </div>
+</div>
+<div class="navbar-options" id="FAQ-container">
+  <div class="textarea-fp">
+    <h3>FAQ</h3>
+    <h4>Varför visas inte synonymer till alla ord?</h4>
+    <p>Det är så att alla ord inte har några synonymer utifrån den data vi arbetar ifrån, samt att alla ord inte (kommer att) ha tillräckligt passande synonymer.</p>
+    <h4>Hur fungerar läslinjalen?</h4>
+    <p>Läslinjalen har en knapp i verktygsfältet bredvid texten. När denna knapp trycks så kommer den typ av läslinjal som är vald i inställningsmenyn att visa sig. För att ändra denna måste man alltså gå in i inställningsmenyn uppe i högra hörnet. De linjaler som finns att välja mellan är fokus, linjal och markering.
+Fokus visar enbart en del av texten, denna yta går att minska eller öka i inställningsmenyn.
+Linjal är en linje som kan användas för att exempelvis lägga under eller över den mening man läser.
+Markering markerar en mening i taget, för att gå vidare eller tillbaka använder man knapparna pil upp eller pil ner på tangentbordet.</p>
+    <h4>Hur ändrar jag inställningarna för läslinjalen?</h4>
+    <p>Under inställningar längst up i högra hörnet finns det inställningar för både hur texten ska visas samt för hur utseendet på läslinjalen ska vara. Lite längre ner i inställningsmenyn finns två knappar med linjaler som ikoner, den vänstra är för att minska linjalens höjd och den andra för att öka linjalens höjd.
+För att ändra så att du kan flytta på linjalerna med pil upp och ned dubbelklickar du på sidan. För att komma tillbaka till att de flyttar sig med musen dubbelklickar du igen på sidan.
+Pil upp och ner kan även ändra på ifall musen liggen under eller över läslinjalen linjal.</p>
+  </div>
+</div>
+<!--ANALYS-SIDAN "TEXT"-->
+<div id="text-container">
+<div class="sidenav">
+  <a class="sidenav-opt" value="0" onclick="showSum()"><i class="fa fa-list-ul side-icon"></i>Sammanfatta texten</a>
+  <div class="sidenav-submenu" id="show-sum">
+    <input type="range" name="sum" class="FRshort frRange" id="sum-range" value="10" min="1" max="10">
+  </div>
+  <a class="sidenav-opt" value="0" onclick="showSentences()"><i class="fa fa-ellipsis-h side-icon"></i>Viktigaste meningarna</a>
+  <div class="sidenav-submenu" id="show-sentences">
+    <input type="range" name="sentences" class="FRshort frRange" id="imp-range" value="0" min="0" max="10">
+    <label for="sentences">0-10</label>
+    <div id="display-sentences"></div>
+  </div>
+  <a class="sidenav-opt" value="0" onclick="activateSimplification()"><i class="fa fa-file side-icon" id="simp-icon"></i>Förenkla texten</a>
+  <div class="sidenav-submenu" id="show-simplification">
+      <p>Anpassa textförenklingen</p>
+      <ul id="stilletOptions">
+        <li>
+          <input class="navcheck" id="-svo" type="checkbox" checked="checked">
+          <label>Rak ordföljd</label>
+        </li>
+        <li>
+          <input class="navcheck" id="-pass2act" type="checkbox" checked="checked">
+          <label>Passiv till aktiv form</label>
+        </li>
+        <li>
+          <input class="navcheck" id="-prox" type="checkbox" checked="checked">
+          <label>Proximering</label>
+        </li>
+        <li>
+          <input class="navcheck" id="-quoteInv" type="checkbox" checked="checked">
+          <label>Citatomvändning</label>
+        </li>
+        <li>
+          <input class="navcheck" id="-split" type="checkbox" checked="checked">
+          <label>Meningsuppdelning</label>
+        </li>
+        <button class="btn btn-primary btn-sm" type="submit" onclick="createSimplification()">Förenkla</button>
+      </ul>
+  </div>
+  <a onclick="activateSynonyms()"><i class="fa fa-question-circle side-icon" id="synonyms-icon"></i>Visa synonymer</a>
+  <a onclick="getSpeaktool()"><i class="fa fa-volume-up side-icon" id="volume-icon"></i>Få texten uppläst</a>
+  <a class="sidenav-opt" value="0" onclick="showInformation()"><i class="fa fa-table side-icon"></i>Textinformation</a>
+  <div class="sidenav-submenu" id="show-information">
+    <table class="info-table">
+      <tbody>
+        <tr>
+          <td>Antal meningar:</td>
+          <td id="numb_sentences"></td>
+        </tr>
+        <tr>
+          <td>Antal ord:</td>
+          <td id="numb_words"></td>
+        </tr>
+        <tr>
+          <td>Antal tokens:</td>
+          <td id="numb_tokens"></td>
+        </tr>
+        <tr>
+          <td>LIX:</td>
+          <td id="lix"></td>
+        </tr>
+        <tr>
+          <td>OVIX:</td>
+          <td id="ovix"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <a class="sidenav-opt" value="0" onclick="showVisualization()"><i class="fa fa-table side-icon"></i>Textkomplexitet</a>
+  <div class="sidenav-submenu" id="show-visualization">
+    <li>Ovix = Ordvariationsindex</li>
+    <li>LIX = Läsbarhetsindex</li>
+    <li>Meningsdjup = Antalet dependensrelationer till/från rot-ordet</li>
+    <div id="graph"></div>
+  </div>
+  <a onclick="toggleSettings()"><i class="fa fa-cog side-icon"></i>Grafiska anpassningar</a>
+  <a onclick="getOriginal()"><i class="fa fa-refresh side-icon"></i>Återställ texten</a>
+
+</div>
+<!-- Page content -->
+<div class="main" id="textarea">
+</div>
+</div>
+
+<div class="alert alert-success" id="pos" role="alert"></div>
+<div class="alert alert-danger" id="neg" role="alert"></div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!--
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="./JS/libs/build.main.js" type="text/javascript"></script>
+    <script src="./JS/Store/SynonymStore.js" type="text/javascript"></script>
+    <script src="./JS/Store/TextStore.js" type="text/javascript"></script>
+    <script src="JS/script.js"></script>
+    <!--Visualization-->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!--Old JS-->
+    <script src="JS/graphicaladjustments.js"></script>
+    <script src="JS/friendlyreader.js"></script>
+    <script src="JS/synonyms.js"></script>
+    <script src="JS/simplification.js"></script>
+    <script src="JS/scream.js"></script>
+    <script src="JS/visualization.js"></script>
+    <script src="JS/responsive-voice.js"></script>
+
+
+    </script>
+  </body>
+</html>

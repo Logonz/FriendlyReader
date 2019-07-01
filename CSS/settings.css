@@ -1,0 +1,141 @@
+/*This file describes the style for the settingsmenu*/
+
+/*This below describes the style of the settingsbutton*/
+.settingsicon {
+    height: 35px;
+    margin: 8px;
+    padding: 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2;
+    border: 1px solid white;
+    border-radius: 3px;
+}
+
+.pressed {
+    border: 1.5px solid black;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.24);
+}
+
+/*This below describes the style of the menu*/
+.settingsmenu {
+    height: 100%;
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Keep the settings menu in front of the read ruler*/
+    margin-top:0px;
+    padding-bottom: 20px;
+    right: 0;
+    background-color: #eee;
+    border-radius: 3px 0px 0px 3px;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the leftnav */
+    text-align: center;
+    font-family: "Helvetica Neue" !important;
+}
+
+.settingsmenu .closebtn {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 36px;
+    padding: 10px;
+    text-decoration: none;
+    color: #818181;
+    z-index: 1;
+}
+.settingsmenu .closebtn:hover {
+    color: #404040;
+}
+
+#settingslabel {
+    position: relative;
+    font-size: 14pt;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    cursor: default;
+}
+
+.sublabel {
+    position: relative;
+    font-size: 14pt;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    cursor: default;
+}
+
+/*This below describes the style of the different settings that can be made*/
+.settingwrapper {
+    width: 80%;
+    height: 50px;
+    margin-left: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#fontlabels {
+    width: 80%;
+    height: auto;
+    margin-left: 10%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.settingsbuttons {
+    width: 53px;
+    height: 43px;
+    padding: 0;
+    cursor: pointer;
+    background-color: white;
+    margin: auto;
+    display: flex;
+    border: 1.5px solid #818181;
+    border-radius: 3px;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2;
+}
+
+.settingsbuttons img {
+    margin: auto;
+}
+
+.settingsbuttons:hover {
+    box-shadow:  0px 2px 5px 0px rgba(0,0,0,0.24);
+}
+
+.settingsbuttons:active {
+    outline: none;/*Removes the original button look when pressed*/
+    border-color: #e6e6e6;
+}
+
+.settingsbuttons:focus {
+    outline: 0;/*Removes the original button look when pressed*/
+}
+
+.chosentype {
+    box-shadow:  0px 2px 5px 0px rgba(0,0,0,0.24);
+    border-color: black;
+}
+
+.settingsbuttons .textfont {
+    position: absolute;
+    z-index: 1;
+    margin-top: 40px;
+}
+
+.settingsarea {
+    width: 50px;
+    height: auto;
+    margin: auto;
+    cursor: default;
+    border-radius: 3px;
+    text-align: center;
+    padding: 9px 0;
+    font-size: 20px;
+}
+
+.fontname {
+    padding: 0;
+    font-size: 10pt;
+    margin: 0;
+}

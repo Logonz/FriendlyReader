@@ -1,0 +1,17 @@
+body{
+background-color: #404040;
+color: white;
+}
+
+h1{
+  font-family: Helvetica;
+  font-size: 150px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#refresh{
+  color: red;
+  display: block;
+}
