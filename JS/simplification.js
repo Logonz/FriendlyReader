@@ -37,26 +37,26 @@ function simplify(text, feedback){
                             }
                         })
 }
-var simpOn = 0
+
 function activateSimplification(){
-  $("#show-simplification").slideToggle("slow", function(){
-    if (simpOn == 0){
-      $("#simp-icon").css("color", "green");
-      simpOn = 1
-    } else{
-      $("#simp-icon").css("color", "");
-      simpOn = 0
-    }
-});
+  var value = $("#show-simplification").attr("value");
+  if (value == 0){
+    $("#show-simplification").slideDown("slow", function(){
+        $("#show-simplification").attr("value", 1);
+        sidenavControl("show-simplification");
+    });
+  }else{
+    $("#show-simplification").slideUp("slow", function(){
+      $("#show-simplification").attr("value", 0);
+    })
+  }
 }
 
 function createSimplification(){
   var currentText = $("#textarea").html();
-  if (synOn == 1){
-    var removedSynonyms = removeSynonyms(currentText);
-    $("#textarea").html(removedSynonyms);
-    currentText = removedSynonyms;
-  };
+  var removedSynonyms = removeSynonyms(currentText);
+  $("#textarea").html(removedSynonyms);
+  currentText = removedSynonyms;
   startLoading();
   var feedback = getStillettOptions();
   console.log("Dessa är checked...", feedback);

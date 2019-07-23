@@ -15,143 +15,108 @@
     <link rel="stylesheet" type="text/css" href="CSS/tools.css">
     <!-- Min CSS-->
     <link rel="stylesheet" type="text/css" href="CSS/style.css">
-
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Assistant:300|Patua+One|Raleway&display=swap" rel="stylesheet">
     <title>Friendlyreader</title>
   </head>
   <body>
-    <!--NAVBAR-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand menu" id="first-page" href="#">Friendlyreader</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link menu" id="help" href="#">Hjälp</a>
-      <a class="nav-item nav-link menu" id="about" href="#">Om</a>
-      <a class="nav-item nav-link menu" id="FAQ" href="#">FAQ</a>
-      <a class="nav-item nav-link menu" id="text" href="#">Text</a>
-      <a class="nav-item nav-link" id="undo"><i class="fa fa-undo hidden"></i></a>
-    </div>
-  </div>
-</nav>
-<!--Grafiska inställningar-meny-->
-<div id="getSettings" class="settingsmenu">
-    <a href="#" class="closebtn" onclick="closeSettings()">&times;</a>
-    <div id="settingslabel">Inställningar</div>
-    <div class="sublabel">Text</div>
-    <div class="settingwrapper">
-        <button class="settingsbuttons" onclick="changeLetterSize('smaller')">
-            <img src="CSS/Icons/Settingsicons/smallerLetter.PNG" height="35px">
-        </button>
-        <div class="settingsarea" id="lettersize">14</div>
-        <button class="settingsbuttons" onclick="changeLetterSize('bigger')">
-            <img src="CSS/Icons/Settingsicons/biggerLetter.PNG" height="35px">
-        </button>
-    </div>
-    <div class="settingwrapper">
-        <button class="settingsbuttons" onclick="changeLineSpace('smaller')">
-            <img src="CSS/Icons/Settingsicons/lessSpace.PNG" height="35px">
-        </button>
-        <div class="settingsarea" id="lineheight">1.5</div>
-        <button class="settingsbuttons" onclick="changeLineSpace('bigger')">
-            <img src="CSS/Icons/Settingsicons/moreSpace.PNG" height="35px">
-        </button>
-    </div>
-    <div id="font" class="settingwrapper">
-        <button class="settingsbuttons" id="font1" onclick="changeFont('Calibri')">
-            <img src="CSS/Icons/Settingsicons/calibri.PNG" height="35px">
-        </button>
-        </button>
-        <button class="settingsbuttons chosentype" id="font3" onclick="changeFont('Arial')">
-            <img src="CSS/Icons/Settingsicons/arial.PNG" height="35px">
-        </button>
-    </div>
-    <div id="fontlabels">
-        <div class="settingsarea fontname">Calibri</div>
-        <div class="settingsarea fontname">Arial</div>
-    </div>
-    <div class="settingwrapper">
-        <button class="settingsbuttons" id="lesswidth" onclick="changeWidth('smaller')">
-            <img src="CSS/Icons/Settingsicons/lessWide.PNG" height="35px">
-        </button>
-        <div class="settingsarea" id="textwidth">100%</div>
-        <button class="settingsbuttons" id="widertext" onclick="changeWidth('bigger')">
-            <img src="CSS/Icons/Settingsicons/wider.PNG" height="35px">
-        </button>
-    </div>
-</div>
 <!--FÖRSTA SIDAN-->
 <div id="first-page-container">
-<div class="welcome"><h4>Hej och välkommen till läsverktyget Friendly Reader!</h4>
-Friendly Reader är ett verktyg för att underlätta läsning av olika typer av texter. För att börja använda vektyget klistrar du in valfri text i rutan nedan och trycker därefter kör..
+  <button type="button" class="btn btn-outline-dark about" data-toggle="modal" data-target="#aboutModal">Om</button>
+  <button type="button" class="btn btn-outline-dark help" data-toggle="modal" data-target="#helpModal">Hjälp</button>
+  <div class="logo">Friendlyreader</div>
+  <!-- Modal - Om -->
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Om Friendlyreader</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+Friendlyreader är en del av projektet DigInclude som arbetar med digital inkludering i det uppkopplade samhället för grupper med speciella behov.
+<br><br>
+I informationssamhället 3.0 är digital kompetens och förmåga att samspela mellan företag, myndigheter och individer en grundläggande förutsättning för tillväxt och livskvalitet. Detta kräver fungerande tillgång till och förmåga att använda tjänster och information på Internet, även för individer som har svårt att följa med i den tekniska utvecklingen. Offentlig sektor har därvid ett speciellt ansvar för att i enlighet med målen i den digitala agendan särskilt stödja medborgare med begränsad förmåga att tillgodogöra sig samhällets e-tjänster och informationsresurser. Denna problematik berör exempelvis personer med vissa funktionshinder (kognitiva funktionsnedsättningar, dyslexi, synskada, etc), äldre seniorer med normalt nedsatta förmågor eller utlandsfödda med begränsad kunskap om det svenska språket och samhället.
+<br><br>
+Projektet syftar till att väsentligt förbättra offentlig sektors digitala tillgänglighet för medborgare med speciella behov genom skrivstöd med kvalitetsstyrning av text, textförenklingar, flerspråkig terminologi, snabböversättningar, etc. Utöver stöd for myndighetens textproduktion ska den enskilda individen kunna använda lösningar for självservice som är anpassade utifrån individens personliga behov. Målet är att verktyg ska vara interoperabelt tillgängliga i integrerade lösningar som utvecklats och testats tillsammans med myndigheter.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- Modal - Hjälp -->
+<div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">Såhär använder du verktyget</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      För att använda verktyget klistrar du in text i textrutan på första sidan och trycker sedan på knappen "KÖR!".
+      <br><br>
+      I verktyget kan du välja flertalet olika funktioner för att förenkla läsning och förståelse av text, exempelvis sammanfatta eller förenkla text.
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+
+  <div class="front-text">Gör det lättare att läsa och förstå text</div>
 <div class="form-group shadow-textarea">
-  <textarea class="form-control z-depth-1 inputtext" id="inputtext" colums="50"rows="10" placeholder="Klistra in din text här..."></textarea>
+  <textarea class="form-control z-depth-1 inputtext" id="inputtext" colums="30"rows="3" placeholder="Klistra in din text här..."></textarea>
 </div>
 <button type="button" class="btn btn-primary btn-lg button" onclick="newPage()">KÖR!</button>
 </div>
-<i id="refresh" class="fa fa-refresh fa-spin fa-2x" aria-hidden="true"></i>
-<div class="navbar-options" id="help-container">
-  <div class="textarea-fp">
-    <h3>Hur fungerar sidan?</h3>
-    <p>Klistra in en text i rutan och tryck på kör för att påbörja användningen av verktyget. Vad verktyget gör är att den ändrar om texten något för att vara mer lättläst utifrån default inställningar, dessa går att ändra med inställningsknappen i övre högra hörnet. Den ändrade texten kommer dyka upp på en ny sida där det finns flera olika funktioner att använda sig av för att underlätta läsningen.
 
-De funktioner som finns att tillgå i detta verktyg är Sammanfattning, Förenkling, Läslinjal, Uppläsning och Synonymhantering.
-
-Vill du lägga in en ny text att läsa utan att tappa alla de inställningar du gjort kan du trycka på loggan för att ta dig tillbaka till första sidan. Sedan är det bara att klistra in den nya texten i textrutan och trycka på kör-knappen.
-    </p>
-    <h3>Vilka funktioner finns?</h3>
-    <p>
-      De funktioner som finns att tillgå i detta verktyg är Sammanfattning, Förenkling, Läslinjal, Uppläsning och Synonymhantering.
-Sammanfattning är en funktion som sammanfattar texten genom att ta ut några av de viktigaste meningarna i texten och presenterar dessa i punktform.
-Förenkling fungerar på så vis att den förenklar hela texten genom att ändra den befintliga texten till den förenklade texten.
-Läslinjal finns i tre varianter, fokus - visar bara delar av texten, linjal - en läslinjal i form av ett svart sträck och markering - markerar en mening i taget. Vid dubbelklick på sidan med fokus eller linjal läslinjelerna igång kan du flyttar du linjalerna med pil upp eller ned.
-Uppläsning är en funktion som läser upp den text du lagt in. I framtida implementering kommer denna funktion möjligtvis även markera den text som läses, mening för mening.
-Synonymhantering är en funktion som belyser de ord som har synonymer när musen sveps över dessa ord och visar upp till tre synonymer till dessa ord.
-    </p>
-</div>
-</div>
-<div class="navbar-options" id="about-container">
-  <div class="textarea-fp">
-    <h3>Om Friendlyreader</h3>
-    <p> Diginclud, eller digital inkludering, är ett storskaligt projekt vars syfte är att förbättra offentlig sektors digitala tillgänglighet för medborgare med speciella behov genom skrivstöd med kvalitetsstyrning av text, textförenklingar, flerspråkig terminologi, snabböversättningar, etc. Utöver stöd for myndigheters textproduktion ska den enskilda individen kunna använda lösningar for självservice som är anpassade utifrån individens personliga behov. Målet är att verktyg ska vara interoperabelt tillgängliga i integrerade lösningar som utvecklats och testats tillsammans med myndigheter.
-
-Friendly Reader är ett delprojekt i Diginclud och syftar till skapa ett läsverktyg med fokus på personer med läsvårigheter. För att uppnå detta har vi skapat en tjänst som innehåller en mängd olika verktyg för att göra det lättare för personer både med och utan olika typer av lässvårigheter. Denna tjänst är alltså primärt riktad mot personer med lässvårigheter, men kan användas av samtliga som finner intresse för att underlätta läsningen.
-    </p>
-  </div>
-</div>
-<div class="navbar-options" id="FAQ-container">
-  <div class="textarea-fp">
-    <h3>FAQ</h3>
-    <h4>Varför visas inte synonymer till alla ord?</h4>
-    <p>Det är så att alla ord inte har några synonymer utifrån den data vi arbetar ifrån, samt att alla ord inte (kommer att) ha tillräckligt passande synonymer.</p>
-    <h4>Hur fungerar läslinjalen?</h4>
-    <p>Läslinjalen har en knapp i verktygsfältet bredvid texten. När denna knapp trycks så kommer den typ av läslinjal som är vald i inställningsmenyn att visa sig. För att ändra denna måste man alltså gå in i inställningsmenyn uppe i högra hörnet. De linjaler som finns att välja mellan är fokus, linjal och markering.
-Fokus visar enbart en del av texten, denna yta går att minska eller öka i inställningsmenyn.
-Linjal är en linje som kan användas för att exempelvis lägga under eller över den mening man läser.
-Markering markerar en mening i taget, för att gå vidare eller tillbaka använder man knapparna pil upp eller pil ner på tangentbordet.</p>
-    <h4>Hur ändrar jag inställningarna för läslinjalen?</h4>
-    <p>Under inställningar längst up i högra hörnet finns det inställningar för både hur texten ska visas samt för hur utseendet på läslinjalen ska vara. Lite längre ner i inställningsmenyn finns två knappar med linjaler som ikoner, den vänstra är för att minska linjalens höjd och den andra för att öka linjalens höjd.
-För att ändra så att du kan flytta på linjalerna med pil upp och ned dubbelklickar du på sidan. För att komma tillbaka till att de flyttar sig med musen dubbelklickar du igen på sidan.
-Pil upp och ner kan även ändra på ifall musen liggen under eller över läslinjalen linjal.</p>
-  </div>
-</div>
 <!--ANALYS-SIDAN "TEXT"-->
 <div id="text-container">
+  <i id="refresh" class="fa fa-refresh fa-spin fa-2x" aria-hidden="true"></i>
+  <div class="head1">
+    <a id="go-back" onclick="goBack()"><i class="fa fa-arrow-left arrow-back" aria-hidden="true"></i></a>
+    <a id="undo"><i class="fa fa-undo hidden left"></i></a>
+    <a id="redo"><i class="fa fa-undo hidden right"></i></a>
+    <h2>Friendlyreader</h2>
+  </div>
+  <!--NAVBAR
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand menu" id="first-page" href="#">Friendlyreader</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+  <div class="navbar-nav">
+    <a class="nav-item nav-link menu" id="help" href="#">Hjälp</a>
+    <a class="nav-item nav-link menu" id="about" href="#">Om</a>
+    <a class="nav-item nav-link menu" id="FAQ" href="#">FAQ</a>
+    <a class="nav-item nav-link menu" id="text" href="#">Text</a>
+    <a class="nav-item nav-link" id="undo"><i class="fa fa-undo hidden"></i></a>
+  </div>
+</div>
+</nav>-->
 <div class="sidenav">
-  <a class="sidenav-opt" value="0" onclick="showSum()"><i class="fa fa-list-ul side-icon"></i>Sammanfatta texten</a>
-  <div class="sidenav-submenu" id="show-sum">
+  <a onclick="showSum()"><i class="fa fa-list-ul side-icon"></i>Sammanfatta texten</a>
+  <div class="sidenav-submenu" value="0" id="show-sum">
+    <p>Sammanfatta texten genom att välja en storlek med dragreglaget</p>
     <input type="range" name="sum" class="FRshort frRange" id="sum-range" value="10" min="1" max="10">
   </div>
-  <a class="sidenav-opt" value="0" onclick="showSentences()"><i class="fa fa-ellipsis-h side-icon"></i>Viktigaste meningarna</a>
-  <div class="sidenav-submenu" id="show-sentences">
+  <a onclick="showSentences()"><i class="fa fa-ellipsis-h side-icon"></i>Viktigaste meningarna</a>
+  <div class="sidenav-submenu" value="0" id="show-sentences">
+    <p>Visa textens viktigaste meningar genom att dra i dragreglaget. Anpassa antalet meningar mellan 1-10.</p>
     <input type="range" name="sentences" class="FRshort frRange" id="imp-range" value="0" min="0" max="10">
-    <label for="sentences">0-10</label>
     <div id="display-sentences"></div>
   </div>
-  <a class="sidenav-opt" value="0" onclick="activateSimplification()"><i class="fa fa-file side-icon" id="simp-icon"></i>Förenkla texten</a>
-  <div class="sidenav-submenu" id="show-simplification">
+  <a onclick="activateSimplification()"><i class="fa fa-file side-icon" id="simp-icon"></i>Förenkla texten</a>
+  <div class="sidenav-submenu" value="0" id="show-simplification">
       <p>Anpassa textförenklingen</p>
       <ul id="stilletOptions">
         <li>
@@ -179,8 +144,8 @@ Pil upp och ner kan även ändra på ifall musen liggen under eller över läsli
   </div>
   <a onclick="activateSynonyms()"><i class="fa fa-question-circle side-icon" id="synonyms-icon"></i>Visa synonymer</a>
   <a onclick="getSpeaktool()"><i class="fa fa-volume-up side-icon" id="volume-icon"></i>Få texten uppläst</a>
-  <a class="sidenav-opt" value="0" onclick="showInformation()"><i class="fa fa-table side-icon"></i>Textinformation</a>
-  <div class="sidenav-submenu" id="show-information">
+  <a onclick="showInformation()"><i class="fa fa-table side-icon"></i>Textinformation</a>
+  <div class="sidenav-submenu" value="0" id="show-information">
     <table class="info-table">
       <tbody>
         <tr>
@@ -206,19 +171,46 @@ Pil upp och ner kan även ändra på ifall musen liggen under eller över läsli
       </tbody>
     </table>
   </div>
-  <a class="sidenav-opt" value="0" onclick="showVisualization()"><i class="fa fa-table side-icon"></i>Textkomplexitet</a>
-  <div class="sidenav-submenu" id="show-visualization">
+  <a onclick="showVisualization()"><i class="fa fa-table side-icon"></i>Textkomplexitet</a>
+  <div class="sidenav-submenu" value="0" id="show-visualization">
     <li>Ovix = Ordvariationsindex</li>
     <li>LIX = Läsbarhetsindex</li>
     <li>Meningsdjup = Antalet dependensrelationer till/från rot-ordet</li>
     <div id="graph"></div>
   </div>
-  <a onclick="toggleSettings()"><i class="fa fa-cog side-icon"></i>Grafiska anpassningar</a>
   <a onclick="getOriginal()"><i class="fa fa-refresh side-icon"></i>Återställ texten</a>
 
 </div>
 <!-- Page content -->
 <div class="main" id="textarea">
+</div>
+<div class="graphics">
+  <button class="settingsbuttons" onclick="changeLetterSize('smaller')">
+      <img src="CSS/Icons/Settingsicons/smallerLetter.PNG" height="35px">
+  </button>
+  <button class="settingsbuttons" onclick="changeLetterSize('bigger')">
+      <img src="CSS/Icons/Settingsicons/biggerLetter.PNG" height="35px">
+  </button>
+  <button class="settingsbuttons" onclick="changeLineSpace('smaller')">
+      <img src="CSS/Icons/Settingsicons/lessSpace.PNG" height="35px">
+  </button>
+  <button class="settingsbuttons" onclick="changeLineSpace('bigger')">
+      <img src="CSS/Icons/Settingsicons/moreSpace.PNG" height="35px">
+  </button>
+  <button class="settingsbuttons font" id="font1" onclick="changeFont('Calibri')">
+      <img src="CSS/Icons/Settingsicons/calibri.PNG" height="35px">
+      </button>
+      <div class="fontname">Calibri</div>
+      <button class="settingsbuttons font" id="font3" onclick="changeFont('Arial')">
+          <img src="CSS/Icons/Settingsicons/arial.PNG" height="35px">
+      </button>
+      <div class="fontname">Arial</div>
+      <button class="settingsbuttons" id="lesswidth" onclick="changeWidth('smaller')">
+          <img src="CSS/Icons/Settingsicons/lessWide.PNG" height="35px">
+      </button>
+      <button class="settingsbuttons" id="widertext" onclick="changeWidth('bigger')">
+          <img src="CSS/Icons/Settingsicons/wider.PNG" height="35px">
+      </button>
 </div>
 </div>
 

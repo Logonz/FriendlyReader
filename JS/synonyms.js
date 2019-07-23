@@ -2,6 +2,18 @@
 This file contains functions regarding synonyms
 */
 
+function removeSynonyms (text) {
+  /*Rensar bort alla word-tooltip*/
+  $(".word-wrapper").each(function(){
+    var tooltip = $(this).parent();
+    tooltip.remove();
+  });
+  /*Tar bort alla spans runt ord med synonymer*/
+  $(".synonyms").contents().unwrap();
+  var text = $("#textarea").html();
+  return text
+}
+
 function updateSynonyms(){
   let words = _GS.SynonymStore.tagText(_GS.TextStore.tokenizedText, "mouseenter", function(event) {
     let parentSpan = $(this);
@@ -48,9 +60,7 @@ function updateSynonyms(){
   });
   return words;
 }
-
-var synOn = 0
-
+  var synOn = 0
 // This function is activated from the side menu
 function activateSynonyms(){
   var text = $("#textarea").html();
@@ -78,16 +88,13 @@ function activateSynonyms(){
         //FEL!
       }
     });
-
-    $("#synonyms-icon").css("color", "green");
-    $(".hidden").css("opacity", "1");
     synOn = 1
+    sidenavControl("none");
 
   } else{
     newtext = removeSynonyms(text);
     $("#textarea").html(newtext);
-    $("#synonyms-icon").css("color", "");
-    $(".hidden").css("opacity", "0");
     synOn = 0
+    sidenavControl("none");
   }
 };

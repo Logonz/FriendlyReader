@@ -33,12 +33,12 @@ function changeLetterSize(size) {
     if (size == "smaller") {
         if (lettersizenr > 12) {
             lettersizenr = lettersizenr - 2;
-            displaylettersize.innerHTML = lettersizenr;
+          //  displaylettersize.innerHTML = lettersizenr;
         }
     } else {
         if (lettersizenr < 20) {
             lettersizenr = lettersizenr + 2;
-            displaylettersize.innerHTML = lettersizenr;
+        //    displaylettersize.innerHTML = lettersizenr;
         }
     }
     lettersize.style.fontSize = lettersizenr + "pt";
@@ -51,12 +51,12 @@ function changeLineSpace(size) {
     if (size == "smaller") {
         if (lineheight >= 1.5) {
             lineheight = lineheight - 0.5;
-            displaylinespace.innerHTML = lineheight;
+          //  displaylinespace.innerHTML = lineheight;
         }
     } else {
         if (lineheight <= 2.5) {
             lineheight = lineheight + 0.5;
-            displaylinespace.innerHTML = lineheight;
+          //  displaylinespace.innerHTML = lineheight;
         }
     }
     linespace.style.lineHeight = lineheight;
@@ -64,38 +64,21 @@ function changeLineSpace(size) {
 
 function changeFont(font) {
     var text = document.getElementById("textarea");
-    var fontbtns = document.getElementById("font");
-    var currentfont = fontbtns.getElementsByClassName("chosentype");
-    currentfont[0].className = currentfont[0].className.replace(" chosentype", "");
-    switch (font) {
-        case "Calibri":
-            document.getElementById("font1").className += " chosentype";
-            break;
-        case "Gadugi":
-            document.getElementById("font2").className += " chosentype";
-            break;
-        case "Arial":
-            document.getElementById("font3").className += " chosentype";
-            break;
-        default:
-            console.log("Wrong font!")
-            break;
-    }
     text.style.fontFamily = font;
 }
 
 
 function changeWidth(size) {
-    var disp = $("#textwidth").html();
-    var dispwid = parseInt(disp.substring(0, disp.length-1));
+  //  var disp = $("#textwidth").html();
+  //  var dispwid = parseInt(disp.substring(0, disp.length-1));
     if (size == "smaller") {
         if (textpadding < 30) {
             textpadding = textpadding + 3;
             changepadd = textpadding + "%";
             $("#textarea").css("padding-left", changepadd);
             $("#textarea").css("padding-right", changepadd);
-            newdisp = dispwid - 10;
-            $("#textwidth").html(newdisp + "%");
+        //    newdisp = dispwid - 10;
+        //    $("#textwidth").html(newdisp + "%");
         }
     } else {
         if (textpadding > 3) {
@@ -103,10 +86,8 @@ function changeWidth(size) {
             changepadd = textpadding + "%";
             $("#textarea").css("padding-left", changepadd);
             $("#textarea").css("padding-right", changepadd);
-            console.log(dispwid);
-            newdisp = dispwid + 10;
-            console.log(newdisp);
-            $("#textwidth").html(newdisp + "%");
+        //    newdisp = dispwid + 10;
+        //    $("#textwidth").html(newdisp + "%");
         }
     }
 

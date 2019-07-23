@@ -1,7 +1,13 @@
 var on = 0
 function getSpeaktool() {
   /*A function that reads the text out loud. Source and more information on: https://responsivevoice.org/api/*/
-    var data = $("#textarea").html();
+    if (synOn == 0){
+      var data = $("#textarea").html();
+    }else{
+      var text = $("#textarea").html();
+      var data = removeSynonyms(text);
+    }
+
     if(data == "") {
 		return;
 	} else if (on == 0) {

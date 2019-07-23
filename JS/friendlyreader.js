@@ -34,10 +34,8 @@ $(document).ready(function() {
         } else {
           //For the most important sentences
           textToSummary = removeFormatting(textToSummary);
-          startLoading();
           $.when(getSummary(textToSummary)).done(function(){
               writeSentences(sentence_list, sentence_order);
-              endLoading();
         });
     }
   });
@@ -45,26 +43,35 @@ $(document).ready(function() {
 
 //Showing and setting values to summerization-slider
 function showSum(){
-  sidenavControl();
-  $("#show-sum").slideDown("slow", function(){
+  var value = $("#show-sum").attr("value");
+  if (value == 0){
+    $("#show-sum").slideDown("slow", function(){
 
-      $(this).attr("value") = 1;
-      //Collecting the current text to use for summerization
-      textToSummary = $("#textarea").html();
-      //Removing html-tags
-      textToSummary = removeFormatting(textToSummary);
+        $("#show-sum").attr("value", 1);
+        //Collecting the current text to use for summerization
+        textToSummary = $("#textarea").html();
+        //Removing html-tags
+        textToSummary = removeFormatting(textToSummary);
 
-      $.when(scream(textToSummary)).done(function(){
+        $.when(scream(textToSummary)).done(function(){
 
-        //Setting the sliders max-value (number of sentences)
-        document.getElementById("sum-range").max = text_sentences;
-        maxvalue = text_sentences;
+          //Setting the sliders max-value (number of sentences)
+          document.getElementById("sum-range").max = text_sentences;
+          maxvalue = text_sentences;
 
-        //Setting the sliders current value to max (number of sentences)
-        document.getElementById("sum-range").value = text_sentences;
+          //Setting the sliders current value to max (number of sentences)
+          document.getElementById("sum-range").value = text_sentences;
 
+    });
+        sidenavControl("show-sum");
   });
-});
+
+
+  }else{
+    $("#show-sum").slideUp("slow", function(){
+      $("#show-sum").attr("value", 0);
+    })
+}
 };
 
 // Writes the most important senteces based on value from slider
@@ -106,8 +113,6 @@ function writeSummary(order, list){
         }
   $("#textarea").html(summary);
     };
-
-
 
 
 function getSummary(text) {
