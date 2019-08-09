@@ -1,93 +1,145 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS + icons -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Gammal CSS-->
-    <link rel="stylesheet" type="text/css" href="CSS/settings.css">
-    <link rel="stylesheet" type="text/css" href="CSS/newpage.css">
-    <link rel="stylesheet" type="text/css" href="CSS/tools.css">
-    <!-- Min CSS-->
-    <link rel="stylesheet" type="text/css" href="CSS/style.css">
-    <!--Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Assistant:300|Patua+One|Raleway&display=swap" rel="stylesheet">
-    <title>Friendlyreader</title>
-  </head>
-  <body>
-<!--FÖRSTA SIDAN-->
-<div id="first-page-container">
-  <button type="button" class="btn btn-outline-dark about" data-toggle="modal" data-target="#aboutModal">Om</button>
-  <button type="button" class="btn btn-outline-dark help" data-toggle="modal" data-target="#helpModal">Hjälp</button>
-  <div class="logo">Friendlyreader</div>
-  <!-- Modal - Om -->
-<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Om Friendlyreader</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS + icons -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Gammal CSS-->
+  <link rel="stylesheet" type="text/css" href="CSS/settings.css">
+  <link rel="stylesheet" type="text/css" href="CSS/newpage.css">
+  <link rel="stylesheet" type="text/css" href="CSS/tools.css">
+  <!-- Min CSS-->
+  <link rel="stylesheet" type="text/css" href="CSS/style.css">
+  <!--Fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Assistant:300|Patua+One|Raleway&display=swap" rel="stylesheet">
+  <title>Friendlyreader</title>
+</head>
+
+<body>
+  <!--FÖRSTA SIDAN-->
+  <div id="first-page-container">
+    <button type="button" class="btn btn-outline-dark about" data-toggle="modal" data-target="#aboutModal">Om</button>
+    <button type="button" class="btn btn-outline-dark help" data-toggle="modal" data-target="#helpModal">Hjälp</button>
+    <div class="logo">Friendlyreader</div>
+    <!-- Modal - Om -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Om Friendlyreader</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Friendlyreader är en del av projektet DigInclude som arbetar med digital inkludering i det uppkopplade
+            samhället för grupper med speciella behov.
+            <br><br>
+            I informationssamhället 3.0 är digital kompetens och förmåga att samspela mellan företag, myndigheter och
+            individer en grundläggande förutsättning för tillväxt och livskvalitet. Detta kräver fungerande tillgång
+            till och förmåga att använda tjänster och information på Internet, även för individer som har svårt att
+            följa med i den tekniska utvecklingen. Offentlig sektor har därvid ett speciellt ansvar för att i enlighet
+            med målen i den digitala agendan särskilt stödja medborgare med begränsad förmåga att tillgodogöra sig
+            samhällets e-tjänster och informationsresurser. Denna problematik berör exempelvis personer med vissa
+            funktionshinder (kognitiva funktionsnedsättningar, dyslexi, synskada, etc), äldre seniorer med normalt
+            nedsatta förmågor eller utlandsfödda med begränsad kunskap om det svenska språket och samhället.
+            <br><br>
+            Projektet syftar till att väsentligt förbättra offentlig sektors digitala tillgänglighet för medborgare med
+            speciella behov genom skrivstöd med kvalitetsstyrning av text, textförenklingar, flerspråkig terminologi,
+            snabböversättningar, etc. Utöver stöd for myndighetens textproduktion ska den enskilda individen kunna
+            använda lösningar for självservice som är anpassade utifrån individens personliga behov. Målet är att
+            verktyg ska vara interoperabelt tillgängliga i integrerade lösningar som utvecklats och testats tillsammans
+            med myndigheter.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-Friendlyreader är en del av projektet DigInclude som arbetar med digital inkludering i det uppkopplade samhället för grupper med speciella behov.
-<br><br>
-I informationssamhället 3.0 är digital kompetens och förmåga att samspela mellan företag, myndigheter och individer en grundläggande förutsättning för tillväxt och livskvalitet. Detta kräver fungerande tillgång till och förmåga att använda tjänster och information på Internet, även för individer som har svårt att följa med i den tekniska utvecklingen. Offentlig sektor har därvid ett speciellt ansvar för att i enlighet med målen i den digitala agendan särskilt stödja medborgare med begränsad förmåga att tillgodogöra sig samhällets e-tjänster och informationsresurser. Denna problematik berör exempelvis personer med vissa funktionshinder (kognitiva funktionsnedsättningar, dyslexi, synskada, etc), äldre seniorer med normalt nedsatta förmågor eller utlandsfödda med begränsad kunskap om det svenska språket och samhället.
-<br><br>
-Projektet syftar till att väsentligt förbättra offentlig sektors digitala tillgänglighet för medborgare med speciella behov genom skrivstöd med kvalitetsstyrning av text, textförenklingar, flerspråkig terminologi, snabböversättningar, etc. Utöver stöd for myndighetens textproduktion ska den enskilda individen kunna använda lösningar for självservice som är anpassade utifrån individens personliga behov. Målet är att verktyg ska vara interoperabelt tillgängliga i integrerade lösningar som utvecklats och testats tillsammans med myndigheter.
+    </div>
+
+    <!-- Modal - Hjälp -->
+    <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Såhär använder du verktyget</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            För att använda verktyget klistrar du in text i textrutan på första sidan och trycker sedan på knappen
+            "KÖR!".
+            <br><br>
+            I verktyget kan du välja flertalet olika funktioner för att förenkla läsning och förståelse av text,
+            exempelvis sammanfatta eller förenkla text.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+
+    <div class="front-text">Gör det lättare att läsa och förstå text</div>
+    <div class="form-group shadow-textarea">
+      <textarea class="form-control z-depth-1 inputtext" id="inputtext" colums="30" rows="3"
+        placeholder="Klistra in din text här..."></textarea>
+      <div id="editor">
+        <h2>The three greatest things you learn from traveling</h2>
+
+        <p>Like all the great things on earth traveling teaches us by example. Here are some of the most precious
+          lessons I’ve
+          learned over the years of traveling.</p>
+
+        <h3>Appreciation of diversity</h3>
+
+        <p>Getting used to an entirely different culture can be challenging. While it’s also nice to learn about
+          cultures
+          online or from books, nothing comes close to experiencing <a
+            href="https://en.wikipedia.org/wiki/Cultural_diversity">cultural diversity</a> in person. You learn to
+          appreciate
+          each and every single one of the differences while you become more culturally fluid.</p>
+
+        <figure class="image image-style-side"><img src="sample/img/umbrellas.jpg"
+            alt="Three Monks walking on ancient temple.">
+          <figcaption>Leaving your comfort zone might lead you to such beautiful sceneries like this one.</figcaption>
+        </figure>
+
+        <h3>Confidence</h3>
+
+        <p>Going to a new place can be quite terrifying. While change and uncertainty makes us scared, traveling teaches
+          us
+          how ridiculous it is to be afraid of something before it happens. The moment you face your fear and see there
+          was
+          nothing to be afraid of, is the moment you discover bliss.</p>
       </div>
-    </div>
-  </div>
-</div>
 
-<!-- Modal - Hjälp -->
-<div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLongTitle">Såhär använder du verktyget</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
     </div>
-    <div class="modal-body">
-      För att använda verktyget klistrar du in text i textrutan på första sidan och trycker sedan på knappen "KÖR!".
-      <br><br>
-      I verktyget kan du välja flertalet olika funktioner för att förenkla läsning och förståelse av text, exempelvis sammanfatta eller förenkla text.
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    </div>
-  </div>
-</div>
-</div>
 
-  <div class="front-text">Gör det lättare att läsa och förstå text</div>
-<div class="form-group shadow-textarea">
-  <textarea class="form-control z-depth-1 inputtext" id="inputtext" colums="30"rows="3" placeholder="Klistra in din text här..."></textarea>
-</div>
-<button type="button" class="btn btn-primary btn-lg button" onclick="newPage()">KÖR!</button>
-</div>
-
-<!--ANALYS-SIDAN "TEXT"-->
-<div id="text-container">
-  <i id="refresh" class="fa fa-refresh fa-spin fa-2x" aria-hidden="true"></i>
-  <div class="head1">
-    <a id="go-back" onclick="goBack()"><i class="fa fa-arrow-left arrow-back" aria-hidden="true"></i></a>
-    <a id="undo"><i class="fa fa-undo hidden left"></i></a>
-    <a id="redo"><i class="fa fa-undo hidden right"></i></a>
-    <h2>Friendlyreader</h2>
+    <button type="button" class="btn btn-primary btn-lg button" onclick="newPage()">KÖR!</button>
   </div>
-  <!--NAVBAR
+
+  <!--ANALYS-SIDAN "TEXT"-->
+  <div id="text-container">
+    <i id="refresh" class="fa fa-refresh fa-spin fa-2x" aria-hidden="true"></i>
+    <div class="head1">
+      <a id="go-back" onclick="goBack()"><i class="fa fa-arrow-left arrow-back" aria-hidden="true"></i></a>
+      <a id="undo"><i class="fa fa-undo hidden left"></i></a>
+      <a id="redo"><i class="fa fa-undo hidden right"></i></a>
+      <h2>Friendlyreader</h2>
+    </div>
+    <!--NAVBAR
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand menu" id="first-page" href="#">Friendlyreader</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,143 +155,163 @@ Projektet syftar till att väsentligt förbättra offentlig sektors digitala til
   </div>
 </div>
 </nav>-->
-<div class="sidenav">
-  <a onclick="showSum()"><i class="fa fa-list-ul side-icon"></i>Sammanfatta texten</a>
-  <div class="sidenav-submenu" value="0" id="show-sum">
-    <p>Sammanfatta texten genom att välja en storlek med dragreglaget</p>
-    <input type="range" name="sum" class="FRshort frRange" id="sum-range" value="10" min="1" max="10">
-  </div>
-  <a onclick="showSentences()"><i class="fa fa-ellipsis-h side-icon"></i>Viktigaste meningarna</a>
-  <div class="sidenav-submenu" value="0" id="show-sentences">
-    <p>Visa textens viktigaste meningar genom att dra i dragreglaget. Anpassa antalet meningar mellan 1-10.</p>
-    <input type="range" name="sentences" class="FRshort frRange" id="imp-range" value="0" min="0" max="10">
-    <div id="display-sentences"></div>
-  </div>
-  <a onclick="activateSimplification()"><i class="fa fa-file side-icon" id="simp-icon"></i>Förenkla texten</a>
-  <div class="sidenav-submenu" value="0" id="show-simplification">
-      <p>Anpassa textförenklingen</p>
-      <ul id="stilletOptions">
-        <li>
-          <input class="navcheck" id="-svo" type="checkbox" checked="checked">
-          <label>Rak ordföljd</label>
-        </li>
-        <li>
-          <input class="navcheck" id="-pass2act" type="checkbox" checked="checked">
-          <label>Passiv till aktiv form</label>
-        </li>
-        <li>
-          <input class="navcheck" id="-prox" type="checkbox" checked="checked">
-          <label>Proximering</label>
-        </li>
-        <li>
-          <input class="navcheck" id="-quoteInv" type="checkbox" checked="checked">
-          <label>Citatomvändning</label>
-        </li>
-        <li>
-          <input class="navcheck" id="-split" type="checkbox" checked="checked">
-          <label>Meningsuppdelning</label>
-        </li>
-        <button class="btn btn-primary btn-sm" type="submit" onclick="createSimplification()">Förenkla</button>
-      </ul>
-  </div>
-  <a onclick="activateSynonyms()"><i class="fa fa-question-circle side-icon" id="synonyms-icon"></i>Visa synonymer</a>
-  <a onclick="getSpeaktool()"><i class="fa fa-volume-up side-icon" id="volume-icon"></i>Få texten uppläst</a>
-  <a onclick="showInformation()"><i class="fa fa-table side-icon"></i>Textinformation</a>
-  <div class="sidenav-submenu" value="0" id="show-information">
-    <table class="info-table">
-      <tbody>
-        <tr>
-          <td>Antal meningar:</td>
-          <td id="numb_sentences"></td>
-        </tr>
-        <tr>
-          <td>Antal ord:</td>
-          <td id="numb_words"></td>
-        </tr>
-        <tr>
-          <td>Antal tokens:</td>
-          <td id="numb_tokens"></td>
-        </tr>
-        <tr>
-          <td>LIX:</td>
-          <td id="lix"></td>
-        </tr>
-        <tr>
-          <td>OVIX:</td>
-          <td id="ovix"></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <a onclick="showVisualization()"><i class="fa fa-table side-icon"></i>Textkomplexitet</a>
-  <div class="sidenav-submenu" value="0" id="show-visualization">
-    <li>Ovix = Ordvariationsindex</li>
-    <li>LIX = Läsbarhetsindex</li>
-    <li>Meningsdjup = Antalet dependensrelationer till/från rot-ordet</li>
-    <div id="graph"></div>
-  </div>
-  <a onclick="getOriginal()"><i class="fa fa-refresh side-icon"></i>Återställ texten</a>
+    <div class="sidenav">
+      <a onclick="showSum()"><i class="fa fa-list-ul side-icon"></i>Sammanfatta texten</a>
+      <div class="sidenav-submenu" value="0" id="show-sum">
+        <p>Sammanfatta texten genom att välja en storlek med dragreglaget</p>
+        <input type="range" name="sum" class="FRshort frRange" id="sum-range" value="10" min="1" max="10">
+      </div>
+      <a onclick="showSentences()"><i class="fa fa-ellipsis-h side-icon"></i>Viktigaste meningarna</a>
+      <div class="sidenav-submenu" value="0" id="show-sentences">
+        <p>Visa textens viktigaste meningar genom att dra i dragreglaget. Anpassa antalet meningar mellan 1-10.</p>
+        <input type="range" name="sentences" class="FRshort frRange" id="imp-range" value="0" min="0" max="10">
+        <div id="display-sentences"></div>
+      </div>
+      <a onclick="activateSimplification()"><i class="fa fa-file side-icon" id="simp-icon"></i>Förenkla texten</a>
+      <div class="sidenav-submenu" value="0" id="show-simplification">
+        <p>Anpassa textförenklingen</p>
+        <ul id="stilletOptions">
+          <li>
+            <input class="navcheck" id="-svo" type="checkbox" checked="checked">
+            <label>Rak ordföljd</label>
+          </li>
+          <li>
+            <input class="navcheck" id="-pass2act" type="checkbox" checked="checked">
+            <label>Passiv till aktiv form</label>
+          </li>
+          <li>
+            <input class="navcheck" id="-prox" type="checkbox" checked="checked">
+            <label>Proximering</label>
+          </li>
+          <li>
+            <input class="navcheck" id="-quoteInv" type="checkbox" checked="checked">
+            <label>Citatomvändning</label>
+          </li>
+          <li>
+            <input class="navcheck" id="-split" type="checkbox" checked="checked">
+            <label>Meningsuppdelning</label>
+          </li>
+          <button class="btn btn-primary btn-sm" type="submit" onclick="createSimplification()">Förenkla</button>
+        </ul>
+      </div>
+      <a onclick="activateSynonyms()"><i class="fa fa-question-circle side-icon" id="synonyms-icon"></i>Visa
+        synonymer</a>
+      <a onclick="getSpeaktool()"><i class="fa fa-volume-up side-icon" id="volume-icon"></i>Få texten uppläst</a>
+      <a onclick="showInformation()"><i class="fa fa-table side-icon"></i>Textinformation</a>
+      <div class="sidenav-submenu" value="0" id="show-information">
+        <table class="info-table">
+          <tbody>
+            <tr>
+              <td>Antal meningar:</td>
+              <td id="numb_sentences"></td>
+            </tr>
+            <tr>
+              <td>Antal ord:</td>
+              <td id="numb_words"></td>
+            </tr>
+            <tr>
+              <td>Antal tokens:</td>
+              <td id="numb_tokens"></td>
+            </tr>
+            <tr>
+              <td>LIX:</td>
+              <td id="lix"></td>
+            </tr>
+            <tr>
+              <td>OVIX:</td>
+              <td id="ovix"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <a onclick="showVisualization()"><i class="fa fa-table side-icon"></i>Textkomplexitet</a>
+      <div class="sidenav-submenu" value="0" id="show-visualization">
+        <li>Ovix = Ordvariationsindex</li>
+        <li>LIX = Läsbarhetsindex</li>
+        <li>Meningsdjup = Antalet dependensrelationer till/från rot-ordet</li>
+        <div id="graph"></div>
+      </div>
+      <a onclick="getOriginal()"><i class="fa fa-refresh side-icon"></i>Återställ texten</a>
 
-</div>
-<!-- Page content -->
-<div class="main" id="textarea">
-</div>
-<div class="graphics">
-  <button class="settingsbuttons" onclick="changeLetterSize('smaller')">
-      <img src="CSS/Icons/Settingsicons/smallerLetter.PNG" height="35px">
-  </button>
-  <button class="settingsbuttons" onclick="changeLetterSize('bigger')">
-      <img src="CSS/Icons/Settingsicons/biggerLetter.PNG" height="35px">
-  </button>
-  <button class="settingsbuttons" onclick="changeLineSpace('smaller')">
-      <img src="CSS/Icons/Settingsicons/lessSpace.PNG" height="35px">
-  </button>
-  <button class="settingsbuttons" onclick="changeLineSpace('bigger')">
-      <img src="CSS/Icons/Settingsicons/moreSpace.PNG" height="35px">
-  </button>
-  <button class="settingsbuttons font" id="font1" onclick="changeFont('Calibri')">
-      <img src="CSS/Icons/Settingsicons/calibri.PNG" height="35px">
+    </div>
+    <!-- Page content -->
+    <div class="main" id="textarea">
+    </div>
+    <div class="graphics">
+      <button class="settingsbuttons" onclick="changeLetterSize('smaller')">
+        <img src="CSS/Icons/Settingsicons/smallerLetter.PNG" height="35px">
+      </button>
+      <button class="settingsbuttons" onclick="changeLetterSize('bigger')">
+        <img src="CSS/Icons/Settingsicons/biggerLetter.PNG" height="35px">
+      </button>
+      <button class="settingsbuttons" onclick="changeLineSpace('smaller')">
+        <img src="CSS/Icons/Settingsicons/lessSpace.PNG" height="35px">
+      </button>
+      <button class="settingsbuttons" onclick="changeLineSpace('bigger')">
+        <img src="CSS/Icons/Settingsicons/moreSpace.PNG" height="35px">
+      </button>
+      <button class="settingsbuttons font" id="font1" onclick="changeFont('Calibri')">
+        <img src="CSS/Icons/Settingsicons/calibri.PNG" height="35px">
       </button>
       <div class="fontname">Calibri</div>
       <button class="settingsbuttons font" id="font3" onclick="changeFont('Arial')">
-          <img src="CSS/Icons/Settingsicons/arial.PNG" height="35px">
+        <img src="CSS/Icons/Settingsicons/arial.PNG" height="35px">
       </button>
       <div class="fontname">Arial</div>
       <button class="settingsbuttons" id="lesswidth" onclick="changeWidth('smaller')">
-          <img src="CSS/Icons/Settingsicons/lessWide.PNG" height="35px">
+        <img src="CSS/Icons/Settingsicons/lessWide.PNG" height="35px">
       </button>
       <button class="settingsbuttons" id="widertext" onclick="changeWidth('bigger')">
-          <img src="CSS/Icons/Settingsicons/wider.PNG" height="35px">
+        <img src="CSS/Icons/Settingsicons/wider.PNG" height="35px">
       </button>
-</div>
-</div>
+    </div>
+  </div>
 
-<div class="alert alert-success" id="pos" role="alert"></div>
-<div class="alert alert-danger" id="neg" role="alert"></div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!--
+  <div class="alert alert-success" id="pos" role="alert"></div>
+  <div class="alert alert-danger" id="neg" role="alert"></div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!--
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="./JS/libs/build.main.js" type="text/javascript"></script>
-    <script src="./JS/Store/SynonymStore.js" type="text/javascript"></script>
-    <script src="./JS/Store/TextStore.js" type="text/javascript"></script>
-    <script src="JS/script.js"></script>
-    <!--Visualization-->
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <!--Old JS-->
-    <script src="JS/graphicaladjustments.js"></script>
-    <script src="JS/friendlyreader.js"></script>
-    <script src="JS/synonyms.js"></script>
-    <script src="JS/simplification.js"></script>
-    <script src="JS/scream.js"></script>
-    <script src="JS/visualization.js"></script>
-    <script src="JS/responsive-voice.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="./JS/libs/build.main.js" type="text/javascript"></script>
+  <script src="./JS/Store/SynonymStore.js" type="text/javascript"></script>
+  <script src="./JS/Store/TextStore.js" type="text/javascript"></script>
+  <script src="JS/script.js"></script>
+  <!--Visualization-->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <!--Old JS-->
+  <script src="JS/graphicaladjustments.js"></script>
+  <script src="JS/friendlyreader.js"></script>
+  <script src="JS/synonyms.js"></script>
+  <script src="JS/simplification.js"></script>
+  <script src="JS/scream.js"></script>
+  <script src="JS/visualization.js"></script>
+  <script src="JS/responsive-voice.js"></script>
+  <script src="JS/libs/ckeditor.js"></script>
+  
+  <script>
+    ClassicEditor
+      .create(document.querySelector('#editor'), {
+        // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+      })
+      .then(editor => {
+        window.editor = editor;
+      })
+      .catch(err => {
+        console.error(err.stack);
+      });
+  </script>
 
 
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>
