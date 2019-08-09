@@ -46,7 +46,7 @@ class SynonymStore {
       let stillettOptions = "Synonyms";
 
       // Function(text) for callback, this.data modifies the state after the data is recived
-      Database.API.SAPISRequest(text, function(data) {
+      Database.API.SAPISRequest(text, function (data) {
         // Callback function
         // data returns an object, if the request fails the object is filled with error data.
         if ("_synonym_suggestions" in data) {
@@ -75,7 +75,7 @@ class SynonymStore {
             _callback(true);
           }
         } else {
-        // Save some meta-data about the call
+          // Save some meta-data about the call
           this.requesting = false;
           this.lastfailed = true;
           this.lastrequestdate = Date.now();
@@ -88,8 +88,8 @@ class SynonymStore {
         }
         // .bind(this) is to keep the score for the function to this class
       }.bind(this),
-      // The options to use
-      stillettOptions);
+        // The options to use
+        stillettOptions);
       return this.data;
     }
     // If we are already requesting, return null

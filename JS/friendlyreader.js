@@ -9,132 +9,134 @@ var frvalue = 1;
 var maxvalue = 0;
 var textToSummary = "";
 
-$(document).ready(function() {
+$(document).ready(function () {
 
-    /*
-      If the value on any of the sliders change
-      this function is activated
-    */
-    $('.frRange').change( function() {
-        id = $(this).attr('id');
-        frvalue = document.getElementById(id).value;
+  /*
+    If the value on any of the sliders change
+    this function is activated
+  */
+  $('.frRange').change(function () {
+    id = $(this).attr('id');
+    frvalue = document.getElementById(id).value;
 
-        if (id == "sum-range"){
-          //For the summarizer
-          if (synOn == 1){
-          }
-          startLoading();
+    if (id == "sum-range") {
+      //For the summarizer
+      if (synOn == 1) {
+      }
+      startLoading();
 
-          $.when(getSummary(textToSummary)).done(function(){
-              writeSummary(sentence_order, sentence_list);
+      $.when(getSummary(textToSummary)).done(function () {
+        writeSummary(sentence_order, sentence_list);
 
-              endLoading();
-              showFeedback("Texten är sammanfattad");
-        });
-        } else {
-          //For the most important sentences
-          textToSummary = removeFormatting(textToSummary);
-          $.when(getSummary(textToSummary)).done(function(){
-              writeSentences(sentence_list, sentence_order);
-        });
+        endLoading();
+        showFeedback("Texten är sammanfattad");
+      });
+    } else {
+      //For the most important sentences
+      textToSummary = removeFormatting(textToSummary);
+      $.when(getSummary(textToSummary)).done(function () {
+        writeSentences(sentence_list, sentence_order);
+      });
     }
   });
 });
 
 //Showing and setting values to summerization-slider
-function showSum(){
+function showSum() {
   var value = $("#show-sum").attr("value");
-  if (value == 0){
-    $("#show-sum").slideDown("slow", function(){
+  if (value == 0) {
+    $("#show-sum").slideDown("slow", function () {
 
-        $("#show-sum").attr("value", 1);
-        //Collecting the current text to use for summerization
-        textToSummary = $("#textarea").html();
-        //Removing html-tags
-        textToSummary = removeFormatting(textToSummary);
+      $("#show-sum").attr("value", 1);
+      //Collecting the current text to use for summerization
+      textToSummary = $("#textarea").html();
+      //Removing html-tags
+      textToSummary = removeFormatting(textToSummary);
 
-        $.when(scream(textToSummary)).done(function(){
+      $.when(scream(textToSummary)).done(function () {
 
-          //Setting the sliders max-value (number of sentences)
-          document.getElementById("sum-range").max = text_sentences;
-          maxvalue = text_sentences;
+        //Setting the sliders max-value (number of sentences)
+        document.getElementById("sum-range").max = text_sentences;
+        maxvalue = text_sentences;
 
-          //Setting the sliders current value to max (number of sentences)
-          document.getElementById("sum-range").value = text_sentences;
+        //Setting the sliders current value to max (number of sentences)
+        document.getElementById("sum-range").value = text_sentences;
 
+      });
+      sidenavControl("show-sum");
     });
-        sidenavControl("show-sum");
-  });
 
 
-  }else{
-    $("#show-sum").slideUp("slow", function(){
+  } else {
+    $("#show-sum").slideUp("slow", function () {
       $("#show-sum").attr("value", 0);
     })
-}
+  }
 };
 
 // Writes the most important senteces based on value from slider
 function writeSentences(lst, order) {
-    var str = "";
-    for (var j = 0; j < frvalue; j++) {
-      if (lst[order[j]] != undefined){
+  var str = "";
+  for (var j = 0; j < frvalue; j++) {
+    if (lst[order[j]] != undefined) {
 
-        //Creating a list item for each sentence
-        //in order based on their importance as a string
-        str += "<li>" + lst[order[j]] + "</li>";
-      }
+      //Creating a list item for each sentence
+      //in order based on their importance as a string
+      str += "<li>" + lst[order[j]] + "</li>";
     }
-    //Placing the list items in an unordered list item
-    str = "<ul>" + str + "</ul>";
+  }
+  //Placing the list items in an unordered list item
+  str = "<ul>" + str + "</ul>";
 
-    $("#display-sentences").html(str);
-    document.getElementById("display-sentences").innerHTML = str;
+  $("#display-sentences").html(str);
+  document.getElementById("display-sentences").innerHTML = str;
 
 };
 
 //Creates a summary of the text based on the value of the slider
-function writeSummary(order, list){
+function writeSummary(order, list) {
   var summary = "";
   var max = frvalue;
   var placedSentences = 0;
   var counter = 0;
 
-  while (placedSentences < max){
-    for (i = 0; i < maxvalue; i++){
-      if (order[i] == counter){
-          counter += 1;
-        if (i < max){
+  while (placedSentences < max) {
+    for (i = 0; i < maxvalue; i++) {
+      if (order[i] == counter) {
+        counter += 1;
+        if (i < max) {
           placedSentences += 1;
           summary += list[order[i]];
         }
       }
-          }
-        }
+    }
+  }
   $("#textarea").html(summary);
-    };
+};
 
 
 function getSummary(text) {
-    console.log("API.FriendlyReader: Sammanfattar texten...");
-    //FRIENDLY READER
-    return jQuery.ajax({
-        headers: {'Accept': 'application/json',
-                  'Content-Type': 'application/json; charset=UTF-8'},
-                  'type': 'POST',
-                  'url': friendly_reader_url + "?format=" + "html" + "&source=" + "string" + "&level=10",
-                  'data': text,
-                  'dataType': 'json',
-                  'success': function(resp) {
-                      console.log("API.FriendlyReader: Sammanfattning klar!");
-                      console.log(resp)
-                      sentence_list = resp.sentences;
-                      sentence_order = resp.rankOrdering;
-                  },
-                  'error': function(xhr, textStatus, errorThrown) {
-                      alert(xhr.responseText);
-                      endLoading();
-                      showNegativeFeedback("Något gick fel");
-                  }
-    })
+  console.log("API.FriendlyReader: Sammanfattar texten...");
+  //FRIENDLY READER
+  return jQuery.ajax({
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json; charset=UTF-8'
+    },
+    'type': 'POST',
+    'url': friendly_reader_url + "?format=" + "html" + "&source=" + "string" + "&level=10",
+    'data': text,
+    'dataType': 'json',
+    'success': function (resp) {
+      console.log("API.FriendlyReader: Sammanfattning klar!");
+      console.log(resp)
+      sentence_list = resp.sentences;
+      sentence_order = resp.rankOrdering;
+    },
+    'error': function (xhr, textStatus, errorThrown) {
+      alert(xhr.responseText);
+      endLoading();
+      showNegativeFeedback("Något gick fel");
+    }
+  })
 }

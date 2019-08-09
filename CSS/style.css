@@ -1,21 +1,22 @@
-html{
+html {
   font-family: "Helvetica Neue";
 }
+
 body {
   padding: 0;
   margin: 0;
   font-family: "Helvetica Neue", sans-serif !important;
 }
 
-#first-page-container{
+#first-page-container {
   margin-top: 0;
   background-color: #212529;
   height: 100vh;
 }
 
-.logo{
+.logo {
   font-size: 24pt;
-  color: 	#ADD8E6;
+  color: #ADD8E6;
   width: 100%;
   position: fixed;
   top: 2vw;
@@ -23,7 +24,7 @@ body {
   font-family: 'Patua One', cursive;
 }
 
-.about{
+.about {
   position: fixed;
   top: 2.9vw;
   left: 73vw;
@@ -31,7 +32,7 @@ body {
   padding-top: 0.270rem;
 }
 
-.help{
+.help {
   position: fixed;
   top: 2.9vw;
   left: 67vw;
@@ -39,7 +40,7 @@ body {
   padding-top: 0.270rem;
 }
 
-.liu{
+.liu {
   position: fixed;
   top: 1vw;
   left: 2vw;
@@ -48,11 +49,11 @@ body {
 }
 
 img {
-    max-width: 100%;
-    max-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
-.arrow-back{
+.arrow-back {
   position: fixed;
   left: 2vw;
   top: 1.5vw;
@@ -61,11 +62,11 @@ img {
   cursor: pointer;
 }
 
-.head1 i:hover{
+.head1 i:hover {
   color: white;
 }
 
-.hidden{
+.hidden {
   position: fixed;
   color: grey;
   font-size: 15pt;
@@ -73,11 +74,11 @@ img {
   cursor: pointer;
 }
 
-.left{
+.left {
   right: 5vw;
 }
 
-.right{
+.right {
   right: 2vw;
   transform: scaleX(-1);
   -moz-transform: scaleX(-1);
@@ -85,7 +86,7 @@ img {
   -ms-transform: scaleX(-1);
 }
 
-.front-text{
+.front-text {
   text-align: center;
   width: 100%;
   color: white;
@@ -97,7 +98,7 @@ img {
   font-size: 50pt;
 }
 
-.head1{
+.head1 {
   width: 100%;
   height: 10vh;
   background-color: #212529;
@@ -108,12 +109,12 @@ img {
   text-align: center;
 }
 
-.head1 h2{
+.head1 h2 {
   font-family: 'Patua One', cursive;
-  color: 	#ADD8E6;
+  color: #ADD8E6;
 }
 
-.welcome{
+.welcome {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
@@ -122,18 +123,20 @@ img {
 }
 
 .shadow-textarea textarea.form-control::placeholder {
-    font-weight: 300;
+  font-weight: 300;
 }
+
 .shadow-textarea textarea.form-control {
-    padding-left: 0.8rem;
+  padding-left: 0.8rem;
 }
-#inputtext{
+
+#inputtext {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
 }
 
-#textarea{
+#textarea {
   font-size: 18px;
   font-family: Arial;
   padding-left: 3%;
@@ -151,7 +154,7 @@ img {
   line-height: 1.5;
 }
 
-.graphics{
+.graphics {
   position: fixed;
   right: 0;
   width: 7vw;
@@ -163,7 +166,7 @@ img {
   padding-top: 1vw;
 }
 
-.button{
+.button {
   margin-top: 10px;
   position: relative;
   left: 45%;
@@ -172,7 +175,7 @@ img {
   width: 10vw;
 }
 
-.textarea-fp{
+.textarea-fp {
   margin-top: 4vh;
   font-family: "Arial";
   width: 60%;
@@ -183,13 +186,18 @@ img {
 }
 
 /* The sidebar menu */
+
 .sidenav {
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 20vw; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  height: 100%;
+  /* Full-height: remove this if you want "auto" height */
+  width: 20vw;
+  /* Set the width of the sidebar */
+  position: fixed;
+  /* Fixed Sidebar (stay in place on scroll) */
   left: 0;
   background-color: #eee;
-  overflow-x: hidden; /* Disable horizontal scroll */
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
   overflow-y: scroll;
   font-family: "Helvetica Neue" !important;
   border-right: 1px solid rgb(204, 204, 204);
@@ -197,6 +205,7 @@ img {
 }
 
 /* The navigation menu links */
+
 .sidenav a {
   padding: 16px 16px 16px 16px;
   font-size: 14px;
@@ -206,14 +215,15 @@ img {
   border-bottom: 1px solid rgb(204, 204, 204);
 }
 
-
 /* When you mouse over the navigation links, change their color */
+
 .sidenav a:hover {
   background-color: #eee;
   cursor: pointer;
 }
 
 /* Style page content */
+
 .main {
   padding: 20px;
   margin-left: 22vw;
@@ -223,20 +233,21 @@ img {
   overflow-y: scroll;
 }
 
-.frRange{
+.frRange {
   margin-left: 16px;
 }
 
-.line{
+.line {
   width: 100%;
   height: 1px;
   background-color: black;
 }
 
-.side-icon{
+.side-icon {
   margin-right: 1vw;
 }
-.sidenav-submenu{
+
+.sidenav-submenu {
   background-color: white;
   width: 100%;
   height: auto;
@@ -247,22 +258,23 @@ img {
 }
 
 /*Tillfällig*/
-#show-information{
+
+#show-information {
   height: auto;
 }
 
-#graph{
+#graph {
   background-color: white;
   opacity: 0.95;
   width: auto;
   height: auto;
 }
 
-.sidenav li{
+.sidenav li {
   font-size: 12px;
 }
 
-#refresh{
+#refresh {
   position: fixed;
   left: 56vw;
   top: 45vh;
@@ -277,26 +289,27 @@ img {
   -ms-transform: scaleX(-1);
 }
 
-
-#show-information{
-  padding: 3px; !important;
+#show-information {
+  padding: 3px;
+  !important;
 }
-.info-table{
+
+.info-table {
   margin: 0;
   width: 100%;
   height: auto;
 }
 
-.info-table td{
+.info-table td {
   padding: 5px;
   border-right: 2px solid white;
 }
 
-tbody tr:nth-child(even){
+tbody tr:nth-child(even) {
   background-color: #eee;
 }
 
-.alert{
+.alert {
   position: fixed;
   left: 43vw;
   bottom: 6vh;
@@ -305,36 +318,36 @@ tbody tr:nth-child(even){
   opacity: 0;
 }
 
-#show-simplification p{
+#show-simplification p {
   font-size: 15px;
 }
 
-ul#stilletOptions{
+ul#stilletOptions {
   list-style-type: none !important;
   padding-left: 0;
   margin-bottom: 0;
 }
 
-#display-sentences{
+#display-sentences {
   padding: 0 !important;
   margin: 0;
 }
 
-#show-sentences ul{
+#show-sentences ul {
   list-style-type: none !important;
   padding-left: 0;
   margin-bottom: 0;
 }
 
-#show-sentences li{
+#show-sentences li {
   padding: 2vh;
   margin-bottom: 2vh;
 }
 
-#show-sentences li:nth-child(even){
+#show-sentences li:nth-child(even) {
   background-color: #eee;
 }
 
-.navbar a{
+.navbar a {
   text-align: center;
 }

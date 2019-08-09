@@ -2,9 +2,9 @@
 This file contains functions regarding synonyms
 */
 
-function removeSynonyms (text) {
+function removeSynonyms(text) {
   /*Rensar bort alla word-tooltip*/
-  $(".word-wrapper").each(function(){
+  $(".word-wrapper").each(function () {
     var tooltip = $(this).parent();
     tooltip.remove();
   });
@@ -14,8 +14,8 @@ function removeSynonyms (text) {
   return text
 }
 
-function updateSynonyms(){
-  let words = _GS.SynonymStore.tagText(_GS.TextStore.tokenizedText, "mouseenter", function(event) {
+function updateSynonyms() {
+  let words = _GS.SynonymStore.tagText(_GS.TextStore.tokenizedText, "mouseenter", function (event) {
     let parentSpan = $(this);
     let intId = parseInt($(this).data("word-id"));
     let word = $(this).data("word");
@@ -27,12 +27,12 @@ function updateSynonyms(){
       // Create the element if it doesn't exist.
       if (!$(this).children(".wordtooltip").length) {
         // Create the tooltip in code and Destroy the tooltip when leaving
-        let div = $("<div>", { "class": "wordtooltip" }).on("mouseleave", function(event) {
+        let div = $("<div>", { "class": "wordtooltip" }).on("mouseleave", function (event) {
           $(this).remove();
         });
 
         // This is the click handler callback.
-        let _callback = function(event) {
+        let _callback = function (event) {
           let id = $(this).data("word-id");
           let synonym = $(this).data("synonym");
 
@@ -60,15 +60,15 @@ function updateSynonyms(){
   });
   return words;
 }
-  var synOn = 0
+var synOn = 0
 // This function is activated from the side menu
-function activateSynonyms(){
+function activateSynonyms() {
   var text = $("#textarea").html();
   text = removeFormatting(text);
-  if (synOn == 0){
+  if (synOn == 0) {
     startLoading();
     _GS = Database.initialize();
-    $("#undo").click(function(){
+    $("#undo").click(function () {
       _GS.resetState();
       let words = updateSynonyms();
       console.log("TeST", words)
@@ -77,21 +77,21 @@ function activateSynonyms(){
     _GS.addStore("TextStore", new TextStore(text));
     _GS.addStore("SynonymStore", new SynonymStore());
 
-    let resp = _GS.SynonymStore.analyzeText(text, function(data){
-      if(data) {
+    let resp = _GS.SynonymStore.analyzeText(text, function (data) {
+      if (data) {
         let words = updateSynonyms();
         console.log("TeST", words)
         $("#textarea").html(words.join(""));
         endLoading();
       }
-      else{
+      else {
         //FEL!
       }
     });
     synOn = 1
     sidenavControl("none");
 
-  } else{
+  } else {
     newtext = removeSynonyms(text);
     $("#textarea").html(newtext);
     synOn = 0

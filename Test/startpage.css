@@ -1,9 +1,9 @@
-body{
-background-color: #404040;
-color: white;
+body {
+  background-color: #404040;
+  color: white;
 }
 
-h1{
+h1 {
   font-family: Helvetica;
   font-size: 150px;
   text-align: center;
@@ -11,7 +11,7 @@ h1{
   margin-right: auto;
 }
 
-#refresh{
+#refresh {
   color: red;
   display: block;
 }
