@@ -38,6 +38,23 @@ function initializeStateMachine(text) {
       $("#textarea").html(_GS.TextStore.text);
     }
   });
+
+  // Should we really set the redo functionality here?
+  /*
+  $("#redo").click(function() {
+    _GS.redoState();
+    if (synOn) {
+      // Synonyms on
+      console.log("FR - redo -> Synonym redo ran.");
+      let words = updateSynonyms();
+      $("#textarea").html(words.join(""));
+    } else {
+      // Default redo
+      console.log("FR - redo -> Default redo ran.");
+      $("#textarea").html(_GS.TextStore.text);
+    }
+  });
+  */
 }
 
 // Quickly move from first page to main page.

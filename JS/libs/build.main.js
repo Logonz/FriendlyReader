@@ -31744,8 +31744,8 @@ class GlobalStore {
     return false;
   }
 
-  finalize() {
-    _UndoStore_js__WEBPACK_IMPORTED_MODULE_4__["default"].storeLength = _UndoStore_js__WEBPACK_IMPORTED_MODULE_4__["default"].snapshots.length;
+  snapshotCount() {
+    return _UndoStore_js__WEBPACK_IMPORTED_MODULE_4__["default"].snapshots.length;
   }
 
   //

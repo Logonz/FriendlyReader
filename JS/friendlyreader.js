@@ -61,7 +61,7 @@ function showSum() {
     $("#show-sum").slideDown("slow", function() {
       $("#show-sum").attr("value", 1);
       // Collecting the current text to use for summerization
-      textToSummary = $("#textarea").html();
+      textToSummary = _GS.TextStore.text;
       // Removing html-tags
       textToSummary = removeFormatting(textToSummary);
 
@@ -69,6 +69,9 @@ function showSum() {
         // Setting the sliders max-value (number of sentences)
         document.getElementById("sum-range").max = text_sentences;
         maxvalue = text_sentences;
+        console.log("FR - Summary -> Setting slider range");
+        $("#slider").attr("max", maxvalue);
+        $("#slider").val(maxvalue);
 
         // Setting the sliders current value to max (number of sentences)
         document.getElementById("sum-range").value = text_sentences;

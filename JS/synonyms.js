@@ -28,7 +28,7 @@ function removeSynonyms(text) {
   $(".synonyms")
     .contents()
     .unwrap();
-  var text = $("#textarea").html();
+  var text = _GS.TextStore.text;
   return text;
 }
 

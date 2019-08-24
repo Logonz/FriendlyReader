@@ -95,7 +95,7 @@ function showSentences() {
   var value = $("#show-sentences").attr("value");
   if (value == 0) {
     $("#show-sentences").slideDown("slow", function() {
-      textToSummary = $("#textarea").html();
+      textToSummary = _GS.TextStore.text;
       $("#show-sentences").attr("value", 1);
       sidenavControl("show-sentences");
     });
@@ -110,7 +110,7 @@ function showInformation() {
   var value = $("#show-information").attr("value");
   if (value == 0) {
     $("#show-information").slideDown("slow", function() {
-      var text = $("#textarea").html();
+      var text = _GS.TextStore.text;
       scream(text);
       $("#show-information").attr("value", 1);
       sidenavControl("show-information");
@@ -126,7 +126,7 @@ function showVisualization() {
   var value = $("#show-visualization").attr("value");
   if (value == 0) {
     $("#show-visualization").slideDown("slow", function() {
-      var text = $("#textarea").html();
+      var text = _GS.TextStore.text;
       scream(text);
       $("#show-visualization").attr("value", 1);
       sidenavControl("show-visualization");
@@ -164,7 +164,9 @@ function showNegativeFeedback(text) {
 
 /* Resets the text to its original design and form */
 function getOriginal() {
-  $("#textarea").html(org_document);
+  _GS.TextStore.newText(org_document);
+  $("#textarea").html(_GS.TextStore.text);
+  synOn = 0;
   $("#sum-range").val("0");
 
   // Closes open options in sidenav

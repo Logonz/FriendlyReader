@@ -68,7 +68,7 @@ function activateSimplification() {
 }
 
 function createSimplification() {
-  var currentText = $("#textarea").html();
+  var currentText = _GS.TextStore.text;
   // If the synonym view is on, we should remove the tags before sending it to the simplifyer.
   if (synOn) {
     currentText = removeSynonyms(currentText);
