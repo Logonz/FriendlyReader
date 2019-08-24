@@ -27,6 +27,7 @@ function initializeStateMachine(text) {
   // Should we really set the undo functionality here?
   $("#undo").click(function() {
     _GS.resetState();
+    deactivateSum();
     if (synOn) {
       // Synonyms on
       console.log("FR - Undo -> Synonym Undo ran.");
