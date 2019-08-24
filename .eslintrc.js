@@ -20,5 +20,6 @@ module.exports = {
         ],
         "space-before-function-paren": "off",
         "no-tabs": "off",
-    }
+    },
+    "env": { "browser": true }
 };
