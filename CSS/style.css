@@ -290,9 +290,9 @@ img {
 }
 
 #show-information {
-  padding: 3px;
-  !important;
+  padding: 3px !important;
 }
+
 
 .info-table {
   margin: 0;
