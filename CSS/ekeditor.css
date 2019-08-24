@@ -1,0 +1,10 @@
+.ck-editor__editable_inline {
+  min-height: 300px;
+}
+
+.centered {
+  max-width: 1280px;
+  /*720p*/
+  margin: 0 auto;
+  padding: 0 var(--ck-sample-base-spacing);
+}

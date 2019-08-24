@@ -15,6 +15,7 @@
   <link rel="stylesheet" type="text/css" href="CSS/settings.css">
   <link rel="stylesheet" type="text/css" href="CSS/newpage.css">
   <link rel="stylesheet" type="text/css" href="CSS/tools.css">
+  <link rel="stylesheet" type="text/css" href="CSS/ekeditor.css">
   <!-- Min CSS-->
   <link rel="stylesheet" type="text/css" href="CSS/style.css">
   <!--Fonts-->
@@ -90,41 +91,32 @@
         </div>
       </div>
     </div>
-
     <div class="front-text">Gör det lättare att läsa och förstå text</div>
     <div class="form-group shadow-textarea">
-      <textarea class="form-control z-depth-1 inputtext" id="inputtext" colums="30" rows="3"
-        placeholder="Klistra in din text här..."></textarea>
-      <div id="editor">
-        <h2>The three greatest things you learn from traveling</h2>
+      <!-- TODO: LOGON; REMOVE THIS PART? KEEP IT FOR SUPPORT -->
+      <textarea class="form-control z-depth-1 inputtext" id="inputtext" colums="30" rows="10"
+        placeholder="Klistra in din text här...">
+        </textarea>
+      <!--<div class="centered">
+          <div class="z-depth-1" id="editor">
 
-        <p>Like all the great things on earth traveling teaches us by example. Here are some of the most precious
-          lessons I’ve
-          learned over the years of traveling.</p>
+          </div>
+        </div>
 
-        <h3>Appreciation of diversity</h3>
+        <script src="JS/libs/ckeditor.js"></script>
 
-        <p>Getting used to an entirely different culture can be challenging. While it’s also nice to learn about
-          cultures
-          online or from books, nothing comes close to experiencing <a
-            href="https://en.wikipedia.org/wiki/Cultural_diversity">cultural diversity</a> in person. You learn to
-          appreciate
-          each and every single one of the differences while you become more culturally fluid.</p>
-
-        <figure class="image image-style-side"><img src="sample/img/umbrellas.jpg"
-            alt="Three Monks walking on ancient temple.">
-          <figcaption>Leaving your comfort zone might lead you to such beautiful sceneries like this one.</figcaption>
-        </figure>
-
-        <h3>Confidence</h3>
-
-        <p>Going to a new place can be quite terrifying. While change and uncertainty makes us scared, traveling teaches
-          us
-          how ridiculous it is to be afraid of something before it happens. The moment you face your fear and see there
-          was
-          nothing to be afraid of, is the moment you discover bliss.</p>
-      </div>
-
+        <script>
+          ClassicEditor
+            .create(document.querySelector('#editor'), {
+              // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+            })
+            .then(editor => {
+              window.editor = editor;
+            })
+            .catch(err => {
+              console.error(err.stack);
+            });
+        </script>-->
     </div>
 
     <button type="button" class="btn btn-primary btn-lg button" onclick="newPage()">KÖR!</button>
@@ -295,20 +287,6 @@
   <script src="JS/scream.js"></script>
   <script src="JS/visualization.js"></script>
   <script src="JS/responsive-voice.js"></script>
-  <script src="JS/libs/ckeditor.js"></script>
-
-  <script>
-    ClassicEditor
-      .create(document.querySelector('#editor'), {
-        // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-      })
-      .then(editor => {
-        window.editor = editor;
-      })
-      .catch(err => {
-        console.error(err.stack);
-      });
-  </script>
 
 
   </script>
