@@ -1,5 +1,5 @@
 var _GS = null;
-var org_document = ""; //This keeps the text in its original form
+var org_document = ""; // This keeps the text in its original form
 
 $(document).ready(function() {
   $(".navbar-options").hide();
@@ -7,7 +7,7 @@ $(document).ready(function() {
   $("#text-container").hide();
   $("#text").hide();
   $(".sidenav-submenu").hide();
-  //Navigering mellan valen i navbar
+  // Navigering mellan valen i navbar
   $(".menu").click(function getNavbarOption(event) {
     var idShow = "#" + $(this).attr("id") + "-container";
     $(".menu").each(function() {
@@ -20,7 +20,7 @@ $(document).ready(function() {
   });
 });
 
-//Nedan följer fristående funktioner
+// Nedan följer fristående funktioner
 
 function sidenavControl(id) {
   $(".sidenav-submenu").each(function() {
@@ -28,9 +28,9 @@ function sidenavControl(id) {
     var element = $(this).attr("id");
 
     if (value == 1) {
-      //Checks if sidemenu-option is open and not the chosen one
+      // Checks if sidemenu-option is open and not the chosen one
       if (element != id) {
-        //Closes the open and changes its value
+        // Closes the open and changes its value
         $(this).slideUp("slow", function() {
           $(this).attr("value", 0);
         });
@@ -122,7 +122,7 @@ function showVisualization() {
   }
 }
 
-/*Shows positive feedback if a request to the server was successfull*/
+/* Shows positive feedback if a request to the server was successfull */
 function showFeedback(text) {
   $("#pos").html(text);
   $("#pos")
@@ -134,7 +134,7 @@ function showFeedback(text) {
     .animate({ opacity: 0 }, 800);
 }
 
-/*Shows negative feedback if a request to the server was unsuccessfull*/
+/* Shows negative feedback if a request to the server was unsuccessfull */
 function showNegativeFeedback(text) {
   $("#neg").html(text);
   $("#neg")
@@ -146,32 +146,32 @@ function showNegativeFeedback(text) {
     .animate({ opacity: 0 }, 800);
 }
 
-/*Resets the text to its original design and form*/
+/* Resets the text to its original design and form */
 function getOriginal() {
   $("#textarea").html(org_document);
   $("#sum-range").val("0");
 
-  //Closes open options in sidenav
+  // Closes open options in sidenav
   sidenavControl("none");
 
-  //Graphical adjustments
+  // Graphical adjustments
   $("#textarea").css("padding-left", "3%");
   $("#textarea").css("padding-right", "3%");
   $("#textarea").css("font-size", "18px");
   $("#textarea").css("font-family", "Arial");
   $("#textarea").css("line-height", "1.5");
 
-  //Feedback to the user
+  // Feedback to the user
   showFeedback("Texten är återställd");
 }
 
-/*Shows a loading-icon*/
+/* Shows a loading-icon */
 function startLoading() {
   $("#refresh").css("display", "block");
   $("#textarea").css("opacity", "0.3");
 }
 
-/*Hides a loading-icon*/
+/* Hides a loading-icon */
 function endLoading() {
   $("#textarea").css("opacity", "1");
   $("#refresh").css("display", "none");

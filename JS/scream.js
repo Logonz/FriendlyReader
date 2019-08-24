@@ -51,7 +51,7 @@ function getInformation(resp) {
 }
 
 function drawGraphs(resp) {
-  //All these aren't relevant for this website, and there possibly needs new values
+  // All these aren't relevant for this website, and there possibly needs new values
   var sweVocNorm = 0.407;
   var ovixNorm = 61;
   var lixNorm = 48.86;
@@ -298,7 +298,7 @@ function drawGraphs(resp) {
 
 			 {axis:"Artikelförekomst", value: norm_comp[12]},
 
-			 {axis:"Neutralitet**", value: norm_comp[13]}*/
+			 {axis:"Neutralitet**", value: norm_comp[13]} */
   ];
 
   drawChart("#graph", data, "100%");

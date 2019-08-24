@@ -3,11 +3,11 @@ This file conatins functions
 needed to simplify the text
 */
 
-var keynames; //Contains a list with the different keynamnes/rules in a specific order
-var simplifiedtext; //Contains the text that is simplified
+var keynames; // Contains a list with the different keynamnes/rules in a specific order
+var simplifiedtext; // Contains the text that is simplified
 
 function simplify(text, feedback) {
-  //Function to generate from the new version of stillett
+  // Function to generate from the new version of stillett
   console.log("API.StilLett: Genererar förenklingsförslag för stillett2...");
 
   var url = "https://www.ida.liu.se/projects/scream/services/sapis/service/";
@@ -94,7 +94,7 @@ function getSentences(text) {
   return items;
 }
 
-/*This function collects all the key names in the dictionary created in the function simplify() and sorts them according to a certain priority*/
+/* This function collects all the key names in the dictionary created in the function simplify() and sorts them according to a certain priority */
 function getKeys(simpldict) {
   var keys = [];
   var svo = [];
@@ -134,15 +134,15 @@ function getKeys(simpldict) {
   console.log(keynames);
 }
 
-/*Simplify the sentences according to the prioritated list created in getKeys*/
+/* Simplify the sentences according to the prioritated list created in getKeys */
 function makesimplification(text, simpldict) {
   var sentenceArray = getSentences(text);
   var new_text = text;
-  var sentsimpxist = false; //sentence simplification exist
-  var sentsimpfound = false; //sentence simplification found
+  var sentsimpxist = false; // sentence simplification exist
+  var sentsimpfound = false; // sentence simplification found
   for (var i = 0; i < sentenceArray.length; i++) {
     for (key in simpldict) {
-      //This loop controls if there is a simplification for the sentence
+      // This loop controls if there is a simplification for the sentence
       if (sentenceArray[i] == simpldict[key]["original"]) {
         sentsimpxist = true;
         break;
@@ -164,12 +164,12 @@ function makesimplification(text, simpldict) {
             }
           }
           if (sentsimpfound == true) {
-            break; //If a simplification has been found the loop needs to continue with the next sentence
+            break; // If a simplification has been found the loop needs to continue with the next sentence
           }
         }
       });
     }
-    sentsimpxist = false; //Reset the values
+    sentsimpxist = false; // Reset the values
     sentsimpfound = false;
   }
   simplifiedtext = new_text;

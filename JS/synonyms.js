@@ -5,12 +5,12 @@ This file contains functions regarding synonyms
 var _GS = null;
 
 function removeSynonyms(text) {
-  /*Rensar bort alla word-tooltip*/
+  /* Rensar bort alla word-tooltip */
   $(".word-wrapper").each(function() {
     var tooltip = $(this).parent();
     tooltip.remove();
   });
-  /*Tar bort alla spans runt ord med synonymer*/
+  /* Tar bort alla spans runt ord med synonymer */
   $(".synonyms")
     .contents()
     .unwrap();
@@ -123,7 +123,7 @@ function activateSynonyms() {
         console.log("TeST", words);
         $("#textarea").html(words.join(""));
         endLoading();
-        //FEL!
+        // FEL!
       }
     });
     synOn = 1;
@@ -164,8 +164,8 @@ function loadSynonymsXML() {
 
         // Synonymerna läggs in i ett dictionary
         if (w1 in xmlDict) {
-          //xmlDict[w1].push([level, w2]);
-          //console.log(xmlDict[w1]);
+          // xmlDict[w1].push([level, w2]);
+          // console.log(xmlDict[w1]);
           if (Array.isArray(xmlDict[w1]) == false) {
             xmlDict[w1] = [];
           }
@@ -174,7 +174,7 @@ function loadSynonymsXML() {
           xmlDict[w1] = [];
           xmlDict[w1].push({ level: parseFloat(level), synonym: w2 });
         }
-        //xmlDict[w1].push({"level": parseFloat(level), "synonym": w2});
+        // xmlDict[w1].push({"level": parseFloat(level), "synonym": w2});
       }
       console.log("CLIENT.Synonyms: Inläsning klar!");
     }

@@ -1,4 +1,4 @@
-/*Draw the graph/visualization*/
+/* Draw the graph/visualization */
 function drawChart(id, data, width) {
   // Get the average of data values. Used with xScale() for bar chart.
   for (var avg = 0, i = 0; i < data.length; i++) {
@@ -11,9 +11,9 @@ function drawChart(id, data, width) {
   }
   avg = Math.pow(avg, 1) / data.length;
 
-  ///////////////////////////////////////////////////////////////////////////
+  /// ////////////////////////////////////////////////////////////////////////
   // -------------------------- RADIAL GRADIENT -------------------------- //
-  ///////////////////////////////////////////////////////////////////////////
+  /// ////////////////////////////////////////////////////////////////////////
 
   /*
 
@@ -49,11 +49,11 @@ function drawChart(id, data, width) {
   // They go in order, so the first object is the colour in the center of the circle.
   // Is it possible to use d3.scale + rgb/hsl as range instead for smoother transition?
   var offsetData = [
-    /*{offset: "5%", color: "rgb(255,0,0)", opacity: "0.7"},
+    /* {offset: "5%", color: "rgb(255,0,0)", opacity: "0.7"},
                       {offset: "40%", color: "rgb(255,255,0)", opacity: "0.5"},
                       {offset: "47%", color: "rgb(0,255,0)", opacity: "0.6"},
                       {offset: "62%", color: "rgb(255,255,0)", opacity: "0.5"},
-                      {offset: "99%", color: "rgb(255,0,0)", opacity: "0.6"}*/
+                      {offset: "99%", color: "rgb(255,0,0)", opacity: "0.6"} */
     { offset: "10%", color: "rgb(0,255,0)", opacity: "0.8" },
     { offset: "50%", color: "rgb(255,255,0)", opacity: "0.6" },
     { offset: "60%", color: "rgb(255,255,0)", opacity: "0.6" },
@@ -99,9 +99,9 @@ function drawChart(id, data, width) {
     .attr("stroke-opacity", 0.5)
     .style("fill", "url(#dia-gradient)");
 
-  ///////////////////////////////////////////////////////////////
+  /// ////////////////////////////////////////////////////////////
   // ---------------------- CREATE AXES ---------------------- //
-  ///////////////////////////////////////////////////////////////
+  /// ////////////////////////////////////////////////////////////
 
   // Inspired by http://bl.ocks.org/nbremer/21746a9668ffdf6d8242
 
@@ -115,10 +115,10 @@ function drawChart(id, data, width) {
   var labelFactor = 1.35; // How far away the labels should be placed
   var axisGrid = svgContainer.append("g").attr("class", "axisWrapper");
   var allAxis = data.map(function(i, j) {
-      return i.axis;
-    }), //Names of each axis
-    total = allAxis.length, // The number of different axes
-    angleSlice = (Math.PI * 2) / total; // The width in radians of each "slice"
+    return i.axis;
+  }); // Names of each axis
+  var total = allAxis.length; // The number of different axes
+  var angleSlice = (Math.PI * 2) / total; // The width in radians of each "slice"
   var axis = axisGrid
     .selectAll(".axis")
     .data(allAxis)
@@ -159,9 +159,9 @@ function drawChart(id, data, width) {
     })
     .call(wrap, wrapWidth);
 
-  ////////////////////////////////////////////////////////////
+  /// /////////////////////////////////////////////////////////
   // ------------ HELPER FUNCTION | WRAP TEXT ------------- //
-  ////////////////////////////////////////////////////////////
+  /// /////////////////////////////////////////////////////////
 
   // Wrap the label names (i.e. make line breaks) if they're too long.
   // Control length with variable wrapWidth.
@@ -169,18 +169,18 @@ function drawChart(id, data, width) {
 
   function wrap(text, width) {
     text.each(function() {
-      var text = d3.select(this),
-        words = text
-          .text()
-          .split(/\s+/)
-          .reverse(),
-        word,
-        line = [],
-        lineNumber = 0,
-        lineHeight = 1, // ems
-        y = text.attr("y"),
-        x = text.attr("x"),
-        dy = 0;
+      var text = d3.select(this);
+      var words = text
+        .text()
+        .split(/\s+/)
+        .reverse();
+      var word;
+      var line = [];
+      var lineNumber = 0;
+      var lineHeight = 1; // ems
+      var y = text.attr("y");
+      var x = text.attr("x");
+      var dy = 0;
       tspan = text
         .text(null)
         .append("tspan")
@@ -205,13 +205,13 @@ function drawChart(id, data, width) {
     });
   }
 
-  /////////////////////////////////////////////////////////////
+  /// //////////////////////////////////////////////////////////
   // ---------------------- BAR CHART ---------------------- //
-  /////////////////////////////////////////////////////////////
+  /// //////////////////////////////////////////////////////////
 
   var barData = [
-    //{offset: "0%", color: "rgb(255,0,0)", opacity: "0.7"},
-    //{offset: "40%", color: "rgb(255,255,0)", opacity: "0.7"},
+    // {offset: "0%", color: "rgb(255,0,0)", opacity: "0.7"},
+    // {offset: "40%", color: "rgb(255,255,0)", opacity: "0.7"},
     { offset: "0%", color: "rgb(0,255,0)", opacity: "0.5" },
     { offset: "50%", color: "rgb(255,255,0)", opacity: "0.6" },
     { offset: "99%", color: "rgb(255,0,0)", opacity: "0.5" }
@@ -262,9 +262,9 @@ function drawChart(id, data, width) {
     .attr("rx", 15) // Length of ellipse
     .attr("ry", 3); // Height of ellipse
 
-  ////////////////////////////////////////////////////////////////
+  /// /////////////////////////////////////////////////////////////
   // ------------------------ DRAW CURVE ---------------------- //
-  ////////////////////////////////////////////////////////////////
+  /// /////////////////////////////////////////////////////////////
 
   // Plot the points from data for the curve.
   var curveFunction = d3
