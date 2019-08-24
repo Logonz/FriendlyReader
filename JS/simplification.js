@@ -1,9 +1,25 @@
+/// Globals
+
+// Libs
+/* global $ */
+
+// Variables
+/* global _GS */
+
+// Functions
+/* global */
+
+/// Classes
+/* global */
+
 /*
 This file conatins functions
 needed to simplify the text
 */
 
 var keynames; // Contains a list with the different keynamnes/rules in a specific order
+// NEVER MODIFY THIS NEVER EVER EVER, except in the makesimplification() function
+// This is a very unsafe practice and should not be done this way, only read this variable!
 var simplifiedtext; // Contains the text that is simplified
 
 function simplify(text, feedback) {
@@ -53,15 +69,29 @@ function activateSimplification() {
 
 function createSimplification() {
   var currentText = $("#textarea").html();
-  var removedSynonyms = removeSynonyms(currentText);
-  $("#textarea").html(removedSynonyms);
-  currentText = removedSynonyms;
+  // If the synonym view is on, we should remove the tags before sending it to the simplifyer.
+  if (synOn) {
+    currentText = removeSynonyms(currentText);
+  }
+  $("#textarea").html(currentText);
   startLoading();
   var feedback = getStillettOptions();
   console.log("Dessa är checked...", feedback);
 
   $.when(simplify(currentText, feedback)).done(function() {
-    $("#textarea").html(simplifiedtext);
+    // Lets use an internal variable to do the modifications
+    console.log("FR - Simplification -> Saving Simplified text");
+    let simpText = simplifiedtext;
+    // Store the simplified text in the state machines.
+    _GS.TextStore.newText(simpText);
+    // If synonyms are on we should continue to show the yellow underline.
+    if (synOn) {
+      console.log("FR - Simplification -> SynonymView is on");
+      let words = updateSynonyms();
+      $("#textarea").html(words);
+    } else {
+      $("#textarea").html(simplifiedtext);
+    }
     showFeedback("Texten är förenklad");
     endLoading();
   });

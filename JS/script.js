@@ -1,5 +1,14 @@
-var _GS = null;
+/// Globals
+// Libs
+/* global $ */
+// Functions
+/* global initializeStateMachine */
+/// Classes
+/* global  */
 var org_document = ""; // This keeps the text in its original form
+
+// globalDebug is used to simplify development
+var globalDebug = true;
 
 $(document).ready(function() {
   $(".navbar-options").hide();
@@ -65,6 +74,13 @@ function newPage() {
   firstpage.fadeOut("slow", function() {
     nextpage.fadeIn("slow");
   });
+
+  console.log("FR MOBX - Initializing Mobx State machine.");
+  // Get the text from the webpage.
+  var text = $("#textarea").html();
+  text = removeFormatting(text);
+  // Initialize the MobX State machine.
+  initializeStateMachine(text);
 }
 
 function goBack() {
