@@ -12,7 +12,7 @@ class TextStore {
     // Use local function to set the data.
     this.newText(text);
 
-    console.log("TextStore Constructor: ", this.tokenizedText);
+    console.log("FR - TextStore -> Constructor: ", this.tokenizedText);
   }
 
   /**
@@ -24,7 +24,7 @@ class TextStore {
    *
    */
   set tokenizedText(text) {
-    console.log("tokenizedText");
+    console.log("FR - TextStore -> tokenizedText");
     this.newText(text);
   }
 
@@ -65,7 +65,7 @@ class TextStore {
    * @decoration action
    */
   newText(text) {
-    console.log("newText");
+    console.log("FR - TextStore -> newText");
     // If it's a string, split it into words
     if (typeof text === "string") {
       this.tokenizedText = Database.utils.tokenizeText(text);

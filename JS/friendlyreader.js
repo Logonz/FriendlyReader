@@ -1,4 +1,16 @@
+/// Globals
+
+// Libs
 /* global $ */
+
+// Variables
+/* global _GS synOn */
+
+// Functions
+/* global updateSynonyms */
+
+/// Classes
+/* global */
 /*
 This file contains the functions
 needed for creating summarization of text
@@ -96,7 +108,7 @@ function writeSummary(order, list) {
 
   while (placedSentences < max) {
     for (var i = 0; i < sentence_list.length; i++) {
-      // Originally used maxlength
+      // Originally used maxvalue
       if (order[i] == counter) {
         counter += 1;
         if (i < max) {
@@ -105,6 +117,12 @@ function writeSummary(order, list) {
         }
       }
     }
+  }
+  // Save the simplified text to the store.
+  console.log("FR - Summary -> Saving Summary text");
+  _GS.TextStore.newText(summary);
+  if (synOn) {
+    summary = updateSynonyms();
   }
   $("#textarea").html(summary);
 }

@@ -1,3 +1,8 @@
+/// Globals
+/* global d3 */
+/* global tspan:true */
+/// Classes
+
 /* Draw the graph/visualization */
 function drawChart(id, data, width) {
   // Get the average of data values. Used with xScale() for bar chart.
