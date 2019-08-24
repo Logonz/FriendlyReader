@@ -21912,14 +21912,14 @@ var computed$$1 = function computed$$1(arg1, arg2, arg3) {
 };
 computed$$1.struct = computedStructDecorator;
 
-function createAction$$1(actionName, fn, ref) {
+function createAction$$1(actionName, fn) {
     if (true) {
         invariant$$1(typeof fn === "function", "`action` can only be invoked on functions");
         if (typeof actionName !== "string" || !actionName)
             fail$$1("actions should have valid names, got: '" + actionName + "'");
     }
     var res = function () {
-        return executeAction$$1(actionName, fn, ref || this, arguments);
+        return executeAction$$1(actionName, fn, this, arguments);
     };
     res.isMobxAction = true;
     return res;
@@ -22990,9 +22990,6 @@ var Reaction$$1 = /** @class */ (function () {
         }
     };
     Reaction$$1.prototype.track = function (fn) {
-        if (this.isDisposed) {
-            fail$$1("Reaction already disposed");
-        }
         startBatch$$1();
         var notify = isSpyEnabled$$1();
         var startTime;
@@ -23250,7 +23247,7 @@ var action$$1 = function action$$1(arg1, arg2, arg3, arg4) {
     // @action fn() {}
     if (arg4 === true) {
         // apply to instance immediately
-        addHiddenProp$$1(arg1, arg2, createAction$$1(arg1.name || arg2, arg3.value, this));
+        addHiddenProp$$1(arg1, arg2, createAction$$1(arg1.name || arg2, arg3.value));
     }
     else {
         return namedActionDecorator$$1(arg2).apply(null, arguments);
@@ -24675,7 +24672,7 @@ var ObservableMap$$1 = /** @class */ (function () {
             entry.setNewValue(value);
         }
         else {
-            entry = new ObservableValue$$1(value, referenceEnhancer$$1, this.name + "." + stringifyKey(key) + "?", false);
+            entry = new ObservableValue$$1(value, referenceEnhancer$$1, this.name + "." + key + "?", false);
             this._hasMap.set(key, entry);
         }
         return entry;
@@ -24708,7 +24705,7 @@ var ObservableMap$$1 = /** @class */ (function () {
         var _this = this;
         checkIfStateModificationsAreAllowed$$1(this._keysAtom);
         transaction$$1(function () {
-            var observable$$1 = new ObservableValue$$1(newValue, _this.enhancer, _this.name + "." + stringifyKey(key), false);
+            var observable$$1 = new ObservableValue$$1(newValue, _this.enhancer, _this.name + "." + key, false);
             _this._data.set(key, observable$$1);
             newValue = observable$$1.value; // value might have been changed
             _this._updateHasMapEntry(key, true);
@@ -24810,7 +24807,7 @@ var ObservableMap$$1 = /** @class */ (function () {
                 });
             else if (isES6Map$$1(other)) {
                 if (other.constructor !== Map)
-                    fail$$1("Cannot initialize from classes that inherit from Map: " + other.constructor.name); // prettier-ignore
+                    return fail$$1("Cannot initialize from classes that inherit from Map: " + other.constructor.name); // prettier-ignore
                 other.forEach(function (value, key) { return _this.set(key, value); });
             }
             else if (other !== null && other !== undefined)
@@ -24872,8 +24869,7 @@ var ObservableMap$$1 = /** @class */ (function () {
         try {
             for (var _b = __values(this), _c = _b.next(); !_c.done; _c = _b.next()) {
                 var _d = __read(_c.value, 2), key = _d[0], value = _d[1];
-                // We lie about symbol key types due to https://github.com/Microsoft/TypeScript/issues/1863
-                res[typeof key === "symbol" ? key : stringifyKey(key)] = value;
+                res["" + key] = value;
             }
         }
         catch (e_3_1) { e_3 = { error: e_3_1 }; }
@@ -24901,7 +24897,7 @@ var ObservableMap$$1 = /** @class */ (function () {
         return (this.name +
             "[{ " +
             Array.from(this.keys())
-                .map(function (key) { return stringifyKey(key) + ": " + ("" + _this.get(key)); })
+                .map(function (key) { return key + ": " + ("" + _this.get(key)); })
                 .join(", ") +
             " }]");
     };
@@ -24920,12 +24916,6 @@ var ObservableMap$$1 = /** @class */ (function () {
     };
     return ObservableMap$$1;
 }());
-function stringifyKey(key) {
-    if (key && key.toString)
-        return key.toString();
-    else
-        return new String(key).toString();
-}
 /* 'var' fixes small-build issue */
 var isObservableMap$$1 = createInstanceofPredicate$$1("ObservableMap", ObservableMap$$1);
 
@@ -25612,8 +25602,7 @@ function deepEq(a, b, aStack, bStack) {
     }
     else {
         // Deep compare objects.
-        var keys$$1 = Object.keys(a);
-        var key = void 0;
+        var keys$$1 = Object.keys(a), key;
         length = keys$$1.length;
         // Ensure that both objects contain the same number of properties before comparing deep equality.
         if (Object.keys(b).length !== length)
@@ -25677,7 +25666,7 @@ but at least in this file we can magically reorder the imports with trial and er
  *
  */
 if (typeof Proxy === "undefined" || typeof Symbol === "undefined") {
-    throw new Error("[mobx] MobX 5+ requires Proxy and Symbol objects. If your environment doesn't support Symbol or Proxy objects, please downgrade to MobX 4. For React Native Android, consider upgrading JSCore.");
+    throw new Error("[mobx] MobX 5+ requires Proxy and Symbol objects. If your environment doesn't support Proxy objects, please downgrade to MobX 4. For React Native Android, consider upgrading JSCore.");
 }
 try {
     // define process.env if needed
@@ -31541,10 +31530,12 @@ class UndoStore {
   // @observable snapshots = [];
   constructor() {
     this.snapshots = [];
+    this.storeLength = 0;
   }
 
   // @action
   lastSnapshot() {
+    console.log("MOBX - Total Snapshots:", this.snapshots.length, this.storeLength);
     if (this.snapshots.length > 0) {
       return this.snapshots[0];
     } else {
@@ -31556,14 +31547,15 @@ class UndoStore {
   pushSnapshot(snap) {
     if (snap) {
       this.snapshots.unshift(snap);
+      console.log("MOBX - Adding Snapshot Total:", this.snapshots.length, this.storeLength, snap);
       // console.log(this.snapshots[0], "pushed");
     } else console.log("undefined snap");
   }
 
   // @action
   popSnapshot() {
-    console.log(this.snapshots[0], "popped");
     this.snapshots.shift();
+    console.log("MOBX - Popped snapshot Total:", this.snapshots.length, this.snapshots[0]);
   }
 }
 Object(mobx__WEBPACK_IMPORTED_MODULE_0__["decorate"])(UndoStore, {
@@ -31662,6 +31654,8 @@ __webpack_require__.r(__webpack_exports__);
  * This file is designed to funnel the global state of the application, accessible via the @observable substores object.
  */
 
+// TODO: https://github.com/mobxjs/mobx/blob/gh-pages/docs/refguide/api.md#configure
+
 class GlobalStore {
   constructor() {
     // After this global store class is instatiated via the constructor function,
@@ -31676,7 +31670,11 @@ class GlobalStore {
       // We do not want snapshot on type ADD due to it being an inital state.
       // this.reseting is a way to hinder the function from recording snapshot when reseting the State
       // storename !== "" do not snapshot the addition or removal of stores.
-      if (changeObject.type === "update" && !this.reseting && storeName !== "") {
+      if (
+        changeObject.type === "update" &&
+        !this.reseting &&
+        storeName !== ""
+      ) {
         let snap = {};
         snap[storeName] = {};
         if (changeObject.index) {
@@ -31684,7 +31682,14 @@ class GlobalStore {
         } else {
           snap[storeName][changeObject.name] = changeObject.oldValue;
         }
-        console.log("DATA:", changeObject, "\nNAME:", storeName, "\nSNAPSHOT:", snap);
+        console.log(
+          "DATA:",
+          changeObject,
+          "\nNAME:",
+          storeName,
+          "\nSNAPSHOT:",
+          snap
+        );
         this.pushSnapshotAndSave(snap);
       }
     });
@@ -31692,7 +31697,12 @@ class GlobalStore {
     this.pushSnapshotAndSave = snapshot => {
       if (snapshot) {
         _UndoStore_js__WEBPACK_IMPORTED_MODULE_4__["default"].pushSnapshot(snapshot);
-        console.info("snapshot saved!", snapshot, "\ncurrentState:", lodash__WEBPACK_IMPORTED_MODULE_2___default.a.cloneDeep(this.substores));
+        console.info(
+          "snapshot saved!",
+          snapshot,
+          "\ncurrentState:",
+          lodash__WEBPACK_IMPORTED_MODULE_2___default.a.cloneDeep(this.substores)
+        );
       } else {
         console.log("no snapshot saved!", snapshot);
       }
@@ -31704,12 +31714,22 @@ class GlobalStore {
     let lastSnapshot = _UndoStore_js__WEBPACK_IMPORTED_MODULE_4__["default"].lastSnapshot();
     if (lastSnapshot) {
       // here is where the entire application state is reset based on the last snapshot, see Snapshot.js
-      console.log("reset state!\nSNAPSHOT:", lastSnapshot, "\nBEFORE:", lodash__WEBPACK_IMPORTED_MODULE_2___default.a.cloneDeep(this.substores));
+      console.log(
+        "reset state!\nSNAPSHOT:",
+        lastSnapshot,
+        "\nBEFORE:",
+        lodash__WEBPACK_IMPORTED_MODULE_2___default.a.cloneDeep(this.substores)
+      );
       this.substores = Object(_methods_snapshot__WEBPACK_IMPORTED_MODULE_3__["resetSnapshot"])(lastSnapshot, this.substores);
       console.log("CURRENT:", lodash__WEBPACK_IMPORTED_MODULE_2___default.a.cloneDeep(this.substores));
       _UndoStore_js__WEBPACK_IMPORTED_MODULE_4__["default"].popSnapshot();
+      this.reseting = false;
+      return true;
+    } else {
+      console.log("MOBX - No state to reset to.");
     }
     this.reseting = false;
+    return false;
   }
 
   addStore(name, object) {
@@ -31717,10 +31737,15 @@ class GlobalStore {
       this.substores[name] = object;
       this[name] = this.substores[name];
       console.log("Added store: ", name, object);
+      _UndoStore_js__WEBPACK_IMPORTED_MODULE_4__["default"].storeLength = _UndoStore_js__WEBPACK_IMPORTED_MODULE_4__["default"].snapshots.length;
       return true;
     }
     console.error("Store with name already exists!", name);
     return false;
+  }
+
+  finalize() {
+    _UndoStore_js__WEBPACK_IMPORTED_MODULE_4__["default"].storeLength = _UndoStore_js__WEBPACK_IMPORTED_MODULE_4__["default"].snapshots.length;
   }
 
   //
@@ -31797,7 +31822,6 @@ function SAPISRequest(data, callback, stillettOptions) {
     res.on("data", function(chunk) {
       data.push(chunk);
     }).on("end", function() {
-      console.log(data.join(""));
       body = JSON.parse(data.join(""));
       if (res.statusCode >= 200 && res.statusCode < 300) {
         console.log("REQUEST SUCCESS:\n", body);
@@ -31883,6 +31907,7 @@ function wordTest(GlobalStore) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tokenizeText", function() { return tokenizeText; });
+
 function tokenizeText (string) { // Skapar en array med tokens (alltså alla möjliga ord tecken)
   var regex = /<[\w\s!"#$%&'()*+,\-./:;=?@[\\\]^_`{|}~”\u00C0-\u017F]+>|(&\w+;)|(\d+)|(\w+-)|([\w\u00C0-\u017F]+)|([\s.,!?()[\]:"”;-])/g;
   var stringArray = string.match(regex);
