@@ -56,6 +56,7 @@ $(document).ready(function() {
 
 // Showing and setting values to summerization-slider
 function showSum() {
+  deactivateSynonyms();
   var value = $("#show-sum").attr("value");
   if (value == 0) {
     $("#show-sum").slideDown("slow", function() {
@@ -65,23 +66,27 @@ function showSum() {
       // Removing html-tags
       textToSummary = removeFormatting(textToSummary);
 
-      $.when(scream(textToSummary)).done(function() {
+      $.when(getSummary(textToSummary)).done(function() {
         // Setting the sliders max-value (number of sentences)
-        document.getElementById("sum-range").max = text_sentences;
-        maxvalue = text_sentences;
         console.log("FR - Summary -> Setting slider range");
-        $("#slider").attr("max", maxvalue);
-        $("#slider").val(maxvalue);
-
-        // Setting the sliders current value to max (number of sentences)
-        document.getElementById("sum-range").value = text_sentences;
+        $("#sum-range").attr("max", sentence_list.length);
+        $("#sum-range").attr("value", sentence_list.length);
+        maxvalue = sentence_list.length;
       });
       sidenavControl("show-sum");
     });
-  } else {
+  }
+}
+
+function deactivateSum() {
+  var value = $("#show-sum").attr("value");
+  if (value != 0) {
     $("#show-sum").slideUp("slow", function() {
       $("#show-sum").attr("value", 0);
     });
+
+    console.log("FR - Summary -> Saving Summary text");
+    _GS.TextStore.newText(removeSynonyms());
   }
 }
 
@@ -122,8 +127,6 @@ function writeSummary(order, list) {
     }
   }
   // Save the simplified text to the store.
-  console.log("FR - Summary -> Saving Summary text");
-  _GS.TextStore.newText(summary);
   if (synOn) {
     summary = updateSynonyms();
   }

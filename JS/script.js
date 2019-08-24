@@ -83,6 +83,11 @@ function newPage() {
   initializeStateMachine(text);
 }
 
+function deactivateAll(){
+  deactivateSynonyms();
+  deactivateSum();
+}
+
 function goBack() {
   var firstpage = $("#first-page-container");
   var nextpage = $("#text-container");
@@ -164,6 +169,7 @@ function showNegativeFeedback(text) {
 
 /* Resets the text to its original design and form */
 function getOriginal() {
+  deactivateSynonyms();
   _GS.TextStore.newText(org_document);
   $("#textarea").html(_GS.TextStore.text);
   synOn = 0;

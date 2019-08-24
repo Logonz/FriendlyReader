@@ -54,6 +54,8 @@ function simplify(text, feedback) {
 }
 
 function activateSimplification() {
+  deactivateSynonyms();
+  deactivateSum();
   var value = $("#show-simplification").attr("value");
   if (value == 0) {
     $("#show-simplification").slideDown("slow", function() {
@@ -71,7 +73,7 @@ function createSimplification() {
   var currentText = _GS.TextStore.text;
   // If the synonym view is on, we should remove the tags before sending it to the simplifyer.
   if (synOn) {
-    currentText = removeSynonyms(currentText);
+    currentText = removeSynonyms();
   }
   $("#textarea").html(currentText);
   startLoading();

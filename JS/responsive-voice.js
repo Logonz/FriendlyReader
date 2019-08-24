@@ -5,7 +5,7 @@ function getSpeaktool() {
     var data = _GS.TextStore.text;
   } else {
     var text = _GS.TextStore.text;
-    var data = removeSynonyms(text);
+    var data = removeSynonyms();
   }
 
   if (data == "") {

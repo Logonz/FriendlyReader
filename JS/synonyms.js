@@ -18,7 +18,7 @@ var synOn = 0;
 // Don't call SAPIS but instead use a string.
 var synonymDebug = false;
 
-function removeSynonyms(text) {
+function removeSynonyms() {
   /* Rensar bort alla word-tooltip */
   $(".word-wrapper").each(function() {
     var tooltip = $(this).parent();
@@ -28,7 +28,7 @@ function removeSynonyms(text) {
   $(".synonyms")
     .contents()
     .unwrap();
-  var text = _GS.TextStore.text;
+  var text = $("#textarea").html();
   return text;
 }
 
@@ -105,8 +105,16 @@ function updateSynonyms() {
   return words;
 }
 
+function deactivateSynonyms() {
+  removeSynonyms();
+  synOn = 0;
+  sidenavControl("none");
+}
+
 // This function is activated from the side menu
 function activateSynonyms() {
+  removeSynonyms();
+  deactivateSum();
   if (synOn === 0) {
     console.log("FR - synonyms -> Activating synonyms");
     // Start the loading UI
@@ -130,10 +138,7 @@ function activateSynonyms() {
     synOn = 1;
     sidenavControl("none");
   } else {
-    newtext = removeSynonyms(_GS.TextStore.text);
-    $("#textarea").html(newtext);
-    synOn = 0;
-    sidenavControl("none");
+    deactivateSynonyms();
   }
 }
 
