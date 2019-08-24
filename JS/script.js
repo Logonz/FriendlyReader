@@ -1,8 +1,7 @@
 var _GS = null;
 var org_document = ""; //This keeps the text in its original form
 
-$(document).ready(function () {
-
+$(document).ready(function() {
   $(".navbar-options").hide();
   $("#analys-mode").hide();
   $("#text-container").hide();
@@ -11,23 +10,20 @@ $(document).ready(function () {
   //Navigering mellan valen i navbar
   $(".menu").click(function getNavbarOption(event) {
     var idShow = "#" + $(this).attr("id") + "-container";
-    $(".menu").each(function () {
+    $(".menu").each(function() {
       if ($(this).is(":visible")) {
         var idHide = "#" + $(this).attr("id") + "-container";
         $(idHide).hide();
-      };
+      }
     });
     $(idShow).show();
   });
-
-
 });
 
 //Nedan följer fristående funktioner
 
 function sidenavControl(id) {
-  $(".sidenav-submenu").each(function () {
-
+  $(".sidenav-submenu").each(function() {
     var value = $(this).attr("value");
     var element = $(this).attr("id");
 
@@ -35,13 +31,13 @@ function sidenavControl(id) {
       //Checks if sidemenu-option is open and not the chosen one
       if (element != id) {
         //Closes the open and changes its value
-        $(this).slideUp("slow", function () {
+        $(this).slideUp("slow", function() {
           $(this).attr("value", 0);
-        })
+        });
       }
     }
   });
-};
+}
 
 function setOrgDocument(docu) {
   org_document = docu;
@@ -52,20 +48,21 @@ function removeFormatting(text) {
   var tmp = document.createElement("DIV");
   tmp.innerHTML = text;
   var clearedText = tmp.textContent || tmp.innerText;
-  console.log(clearedText)
-  return clearedText
-};
+  console.log(clearedText);
+  return clearedText;
+}
 
 function newPage() {
-
-  var inputtext = $("#inputtext").val().replace(/\n/g, '<br>');
+  var inputtext = $("#inputtext")
+    .val()
+    .replace(/\n/g, "<br>");
   var firstpage = $("#first-page-container");
   var nextpage = $("#text-container");
   setOrgDocument(inputtext);
 
   $("#textarea").html(inputtext);
   $("#text").show();
-  firstpage.fadeOut("slow", function () {
+  firstpage.fadeOut("slow", function() {
     nextpage.fadeIn("slow");
   });
 }
@@ -73,71 +70,80 @@ function newPage() {
 function goBack() {
   var firstpage = $("#first-page-container");
   var nextpage = $("#text-container");
-  nextpage.fadeOut("slow", function () {
+  nextpage.fadeOut("slow", function() {
     firstpage.fadeIn("slow");
   });
-
 }
 
 function showSentences() {
   var value = $("#show-sentences").attr("value");
   if (value == 0) {
-    $("#show-sentences").slideDown("slow", function () {
+    $("#show-sentences").slideDown("slow", function() {
       textToSummary = $("#textarea").html();
       $("#show-sentences").attr("value", 1);
       sidenavControl("show-sentences");
     });
   } else {
-    $("#show-sentences").slideUp("slow", function () {
+    $("#show-sentences").slideUp("slow", function() {
       $("#show-sentences").attr("value", 0);
-    })
+    });
   }
 }
 
 function showInformation() {
   var value = $("#show-information").attr("value");
   if (value == 0) {
-    $("#show-information").slideDown("slow", function () {
+    $("#show-information").slideDown("slow", function() {
       var text = $("#textarea").html();
       scream(text);
       $("#show-information").attr("value", 1);
       sidenavControl("show-information");
     });
   } else {
-    $("#show-information").slideUp("slow", function () {
+    $("#show-information").slideUp("slow", function() {
       $("#show-information").attr("value", 0);
-    })
+    });
   }
-};
+}
 
 function showVisualization() {
   var value = $("#show-visualization").attr("value");
   if (value == 0) {
-    $("#show-visualization").slideDown("slow", function () {
+    $("#show-visualization").slideDown("slow", function() {
       var text = $("#textarea").html();
       scream(text);
       $("#show-visualization").attr("value", 1);
       sidenavControl("show-visualization");
     });
   } else {
-    $("#show-visualization").slideUp("slow", function () {
+    $("#show-visualization").slideUp("slow", function() {
       $("#show-visualization").attr("value", 0);
-    })
+    });
   }
-};
+}
 
 /*Shows positive feedback if a request to the server was successfull*/
 function showFeedback(text) {
   $("#pos").html(text);
-  $("#pos").css({ 'opacity': 0 }).animate({ 'opacity': 1 }, 800).delay(1200);
-  $("#pos").css({ 'opacity': 1 }).animate({ 'opacity': 0 }, 800);
-};
+  $("#pos")
+    .css({ opacity: 0 })
+    .animate({ opacity: 1 }, 800)
+    .delay(1200);
+  $("#pos")
+    .css({ opacity: 1 })
+    .animate({ opacity: 0 }, 800);
+}
 
 /*Shows negative feedback if a request to the server was unsuccessfull*/
 function showNegativeFeedback(text) {
   $("#neg").html(text);
-  $("#neg").css({ 'opacity': 0 }).animate({ 'opacity': 1 }, 800).delay(1200);
-  $("#neg").css({ 'opacity': 1 }).animate({ 'opacity': 0 }, 800);
+  $("#neg")
+    .css({ opacity: 0 })
+    .animate({ opacity: 1 }, 800)
+    .delay(1200);
+  $("#neg")
+    .css({ opacity: 1 })
+    .animate({ opacity: 0 }, 800);
 }
 
 /*Resets the text to its original design and form*/
@@ -157,7 +163,7 @@ function getOriginal() {
 
   //Feedback to the user
   showFeedback("Texten är återställd");
-};
+}
 
 /*Shows a loading-icon*/
 function startLoading() {

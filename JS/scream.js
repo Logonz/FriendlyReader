@@ -8,40 +8,33 @@ function scream(text) {
   console.log("API.Scream: Beräknar textkomplexitet...");
   startLoading();
 
-
-  var url = "https://www.ida.liu.se/projects/scream/services/sapis/service/"
+  var url = "https://www.ida.liu.se/projects/scream/services/sapis/service/";
   var data = JSON.stringify({
     options: "LexicalMetrics()\tSurfaceMetrics()\tStructuralMetrics()",
     document: text
-  })
+  });
 
   return jQuery.ajax({
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    'type': 'POST',
-    'url': url,
-    'data': data,
-    'dataType': 'json',
-    'success': function (resp) {
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    type: "POST",
+    url: url,
+    data: data,
+    dataType: "json",
+    success: function(resp) {
       console.log("API.Scream: Beräkning klar!");
       drawGraphs(resp);
       getInformation(resp);
       text_sentences = parseFloat(resp._numberOfSentences);
-      console.log("Funktioner körda!")
+      console.log("Funktioner körda!");
       endLoading();
-
     },
-    'error': function (xhr, textStatus, errorThrown) {
+    error: function(xhr, textStatus, errorThrown) {
       console.log("API.Scream: ERROR Något gick fel, se JS-logg.");
       console.log(xhr.responseText);
       endLoading();
       showNegativeFeedback("Någonting gick fel");
-
     }
   });
-
 }
 
 function getInformation(resp) {
@@ -75,13 +68,11 @@ function drawGraphs(resp) {
   var rSubClauses = parseFloat(resp._ratioSubClauses);
   var avgSentDepth = parseFloat(resp._avgSentenceDepth);
 
-
   var numberOfWords = parseFloat(resp._numberOfWords);
 
   var ratioSweVocTotal = parseFloat(resp._SweVocTotal);
 
   var totalVerbArity = parseFloat(totalVerbArity);
-
 
   var avgNominalPostmodifiers = parseFloat(resp._avgNominalPostmodifiers);
   var avgNominalPremodifiers = parseFloat(resp._avgNominalPremodifiers);
@@ -110,7 +101,7 @@ function drawGraphs(resp) {
   var dep_IR = parseFloat(resp._depTypeOccurrences.IR) / numberOfWords;
   var dep_JR = parseFloat(resp._depTypeOccurrences.JR) / numberOfWords;
   var pos_PAD = parseFloat(resp._posOccurrences.PAD) / numberOfWords;
-  var dep_F = parseFloat(resp._depTypeOccurrences["+F"] / numberOfWords)
+  var dep_F = parseFloat(resp._depTypeOccurrences["+F"] / numberOfWords);
   var dep_MS = parseFloat(resp._depTypeOccurrences.MS) / numberOfWords;
   var pos_KN = parseFloat(resp._posOccurrences.KN) / numberOfWords;
   var ratioVerbalRoots = parseFloat(resp._ratioVerbalRoots) / totalVerbArity;
@@ -156,7 +147,7 @@ function drawGraphs(resp) {
   var verbArity3 = parseFloat(resp._verbArities[3]) / totalVerbArity;
   var verbArity4 = parseFloat(resp._verbArities[4]) / totalVerbArity;
   var dep_OA = parseFloat(resp._depTypeOccurrences.OA) / numberOfWords;
-  var avgVerbalArity = parseFloat(resp._avgVerbalArity)
+  var avgVerbalArity = parseFloat(resp._avgVerbalArity);
   var dep_VG = parseFloat(resp._depTypeOccurrences.VG) / numberOfWords;
   var verbArity1 = parseFloat(resp._verbArities[1]) / totalVerbArity;
   var dep_IO = parseFloat(resp._depTypeUnigramProbs.IO);
@@ -167,28 +158,40 @@ function drawGraphs(resp) {
   var dep_JT = parseFloat(resp._depTypeUnigramProbs.JT);
   var verbArity0 = parseFloat(resp._verbArities[0]) / totalVerbArity;
 
-
   if (sweVoc > sweVocNorm) {
     sweVoc = 1;
+  } else {
+    sweVoc = sweVoc / sweVocNorm;
   }
-  else {
-    sweVoc = sweVoc / sweVocNorm
-  }
 
-  var comp1 = avgNominalPostmodifiers + avgNominalPostmodifiers + avgPrepComp + avgSentenceDepth + avgSentenceLength
-    + avgWordsPerClause + dep_ET + dep_IP + dep_SS + lix + meanDepDistanceDependent + meanDepDistanceSentence + nrValue + pos_MAD
+  var comp1 =
+    avgNominalPostmodifiers +
+    avgNominalPostmodifiers +
+    avgPrepComp +
+    avgSentenceDepth +
+    avgSentenceLength +
+    avgWordsPerClause +
+    dep_ET +
+    dep_IP +
+    dep_SS +
+    lix +
+    meanDepDistanceDependent +
+    meanDepDistanceSentence +
+    nrValue +
+    pos_MAD;
 
-  var comp2 = dep_SS + dep_UA + pos_SN + pos_VB + verbArity2
+  var comp2 = dep_SS + dep_UA + pos_SN + pos_VB + verbArity2;
 
-  var comp3 = dep_IK + dep_IT + pos_MID
+  var comp3 = dep_IK + dep_IT + pos_MID;
 
-  var comp4 = avgNominalPremodifiers + dep_AT + pos_JJ + ratioRightDeps
+  var comp4 = avgNominalPremodifiers + dep_AT + pos_JJ + ratioRightDeps;
 
-  var comp5 = dep_AN + dep_IR + dep_JR + pos_PAD
+  var comp5 = dep_AN + dep_IR + dep_JR + pos_PAD;
   var comp6 = dep_F + dep_MS + pos_KN + ratioVerbalRoots;
   var comp7 = dep_IC + dep_JC + pos_CITE;
   var comp8 = dep_IF + pos_IE;
-  var comp9 = avgNoSyllables + avgWordLength + lix + ovix + pos_PN + ratioSweVocC;
+  var comp9 =
+    avgNoSyllables + avgWordLength + lix + ovix + pos_PN + ratioSweVocC;
   var comp10 = dep_EF + dep_XX + pos_HP;
   var comp11 = dep_PL + pos_PL;
   var comp12 = dep_AA + dep_NA + pos_AB;
@@ -198,7 +201,14 @@ function drawGraphs(resp) {
   var comp16 = dep_CJ + dep_VA + pos_KN;
   var comp17 = dep_TA + pos_HA;
   var comp18 = dep_EO + dep_FO + dep_OP;
-  var comp19 = dep_HD + lexicalDensity + pos_VB + ratioSweVocC + ratioSweVocD + ratioSweVocH + ratioSweVocTotal;
+  var comp19 =
+    dep_HD +
+    lexicalDensity +
+    pos_VB +
+    ratioSweVocC +
+    ratioSweVocD +
+    ratioSweVocH +
+    ratioSweVocTotal;
   var comp20 = dep_SS + pos_RG;
   var comp21 = dep_AG + dep_PT + pos_PC;
   var comp22 = verbArity3 + verbArity4;
@@ -210,7 +220,37 @@ function drawGraphs(resp) {
   var comp28 = dep_IS + dep_JT;
   var comp29 = avgVerbalArity + verbArity0;
 
-  var comp_arr = [comp1, comp2, comp3, comp4, comp5, comp6, comp7, comp8, comp9, comp10, comp11, comp12, comp13, comp14, comp15, comp16, comp17, comp18, comp19, comp20, comp21, comp22, comp23, comp24, comp25, comp26, comp27, comp28, comp29];
+  var comp_arr = [
+    comp1,
+    comp2,
+    comp3,
+    comp4,
+    comp5,
+    comp6,
+    comp7,
+    comp8,
+    comp9,
+    comp10,
+    comp11,
+    comp12,
+    comp13,
+    comp14,
+    comp15,
+    comp16,
+    comp17,
+    comp18,
+    comp19,
+    comp20,
+    comp21,
+    comp22,
+    comp23,
+    comp24,
+    comp25,
+    comp26,
+    comp27,
+    comp28,
+    comp29
+  ];
 
   var norm_comp = new Array();
   for (i = 0; i < comp_arr.length; i++) {
@@ -232,34 +272,33 @@ function drawGraphs(resp) {
     { axis: "Meningsdjup", value: avgSentDepth / avgSentDepthNorm }
     /*
 
-     {axis:"Medelmeningslängd", value: norm_comp[0]},
+			 {axis:"Medelmeningslängd", value: norm_comp[0]},
 
-     {axis:"Bisatsförekomst", value: norm_comp[1]},
+			 {axis:"Bisatsförekomst", value: norm_comp[1]},
 
-     {axis:"Meningsintern interpunktion", value: norm_comp [2]},
+			 {axis:"Meningsintern interpunktion", value: norm_comp [2]},
 
-     {axis:"vänsterattribut", value: norm_comp[3]}, //borde kanske kallas högerattribut??
+			 {axis:"vänsterattribut", value: norm_comp[3]}, //borde kanske kallas högerattribut??
 
-     {axis:"Parentetiska inskott", value: norm_comp[4]},
+			 {axis:"Parentetiska inskott", value: norm_comp[4]},
 
-     {axis:"Enkla meningar**", value: norm_comp[5]},
+			 {axis:"Enkla meningar**", value: norm_comp[5]},
 
-     {axis:"(direkt) anföring", value: norm_comp[6]},
+			 {axis:"(direkt) anföring", value: norm_comp[6]},
 
-     {axis:"Förekomst av infinitiva verbfraser", value: norm_comp[7]},
+			 {axis:"Förekomst av infinitiva verbfraser", value: norm_comp[7]},
 
-     {axis:"Ordlängd", value: norm_comp[8]},
+			 {axis:"Ordlängd", value: norm_comp[8]},
 
-     {axis:"Klyvna satser", value: norm_comp[9]},
+			 {axis:"Klyvna satser", value: norm_comp[9]},
 
-     {axis:"Partikelverbförekomst", value: norm_comp[10]},
+			 {axis:"Partikelverbförekomst", value: norm_comp[10]},
 
-     {axis:"Adverbial", value: norm_comp[11]},
+			 {axis:"Adverbial", value: norm_comp[11]},
 
-     {axis:"Artikelförekomst", value: norm_comp[12]},
+			 {axis:"Artikelförekomst", value: norm_comp[12]},
 
-     {axis:"Neutralitet**", value: norm_comp[13]}*/
-
+			 {axis:"Neutralitet**", value: norm_comp[13]}*/
   ];
 
   drawChart("#graph", data, "100%");

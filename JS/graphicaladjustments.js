@@ -44,7 +44,6 @@ function changeLetterSize(size) {
   lettersize.style.fontSize = lettersizenr + "pt";
 }
 
-
 function changeLineSpace(size) {
   var linespace = document.getElementById("textarea");
   var displaylinespace = document.getElementById("lineheight");
@@ -66,7 +65,6 @@ function changeFont(font) {
   var text = document.getElementById("textarea");
   text.style.fontFamily = font;
 }
-
 
 function changeWidth(size) {
   //  var disp = $("#textwidth").html();
@@ -90,5 +88,4 @@ function changeWidth(size) {
       //    $("#textwidth").html(newdisp + "%");
     }
   }
-
 }

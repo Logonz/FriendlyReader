@@ -16,54 +16,54 @@ class TextStore {
   }
 
   /**
-  * if someone sets this.tokenizedText directly, run this function also. (this.tokenizedText = XXX).
-  *
-  * Description: see newText function.
-  *
-  * @param {string} text The text to set as a string, will use .join("") on array.
-  *
-  */
+   * if someone sets this.tokenizedText directly, run this function also. (this.tokenizedText = XXX).
+   *
+   * Description: see newText function.
+   *
+   * @param {string} text The text to set as a string, will use .join("") on array.
+   *
+   */
   set tokenizedText(text) {
     console.log("tokenizedText");
     this.newText(text);
   }
 
   /**
-  * THIS IS NOT A FUNCTION usage "TextStore.text" just like a variable.
-  *
-  * Description TODO.
-  *
-  * @param {string} text The text to set as a string, will use .join("") on array.
-  *
-  * @decoration computed
-  */
+   * THIS IS NOT A FUNCTION usage "TextStore.text" just like a variable.
+   *
+   * Description TODO.
+   *
+   * @param {string} text The text to set as a string, will use .join("") on array.
+   *
+   * @decoration computed
+   */
   get text() {
     return this.tokenizedText.join("");
   }
 
   /**
-  * Enables TextStore.text = " hej jag heter david" TL;DR use like a variable.
-  *
-  * Description TODO.
-  *
-  * @param {string} text The text to set as a string, will use .join("") on array.
-  *
-  * @decoration computed
-  */
+   * Enables TextStore.text = " hej jag heter david" TL;DR use like a variable.
+   *
+   * Description TODO.
+   *
+   * @param {string} text The text to set as a string, will use .join("") on array.
+   *
+   * @decoration computed
+   */
   set text(text) {
     console.log("text");
     this.newText(text);
   }
 
   /**
-  * The text to set as a string, will use .join("") on array.
-  *
-  * Description TODO.
-  *
-  * @param {string} text The text to set as a string, will use .join("") on array.
-  *
-  * @decoration action
-  */
+   * The text to set as a string, will use .join("") on array.
+   *
+   * Description TODO.
+   *
+   * @param {string} text The text to set as a string, will use .join("") on array.
+   *
+   * @decoration action
+   */
   newText(text) {
     console.log("newText");
     // If it's a string, split it into words
@@ -90,7 +90,7 @@ class TextStore {
     }
     return null;
   }
-};
+}
 
 // Decoration
 Mobx.decorate(TextStore, {
